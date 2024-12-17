@@ -14,14 +14,14 @@ const config = {
       // precompress: false,
       // strict: true
     }),
-    // paths: {
-    //   // base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-    //   base: '',
-    // },
-    router: {
-      base: '',
-      trailingSlash: 'always'
+    paths: {
+      base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+      // base: '',
     },
+    // router: {
+    //   base: '',
+    //   trailingSlash: 'always'
+    // },
     prerender: {
       default: true
     }

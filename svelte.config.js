@@ -21,10 +21,7 @@ const config = {
     // router: {
     //   base: '',
     //   trailingSlash: 'always'
-    // },
-    prerender: {
-      default: true
-    }
+    // }
   },
 
   preprocess: [mdsvex()],

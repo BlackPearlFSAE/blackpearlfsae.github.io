@@ -12,6 +12,14 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Bricolage Grotesque Variable', ...defaultTheme.fontFamily.sans]
+      },
+      colors: {
+        transparent: 'transparent',
+        blackie: '#02040f',
+        baby_powder: "#fffffc",
+        khaki_web: "#beb7a4",
+        amber_SAE_ECE: "#ff7f11",
+        coqueilcot: "#ff3f00"
       }
     }
   },

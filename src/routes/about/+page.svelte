@@ -10,7 +10,7 @@
 	<title>{pageTitle}</title>
 </svelte:head>
 
-<div class="p-2">
+<div class="bg-baby_powder text-blackie p-2">
 	<h1 class="text-3xl font-bold">Our Heritage</h1>
-	<p class="font-sans font-medium">Coming from the flashback.</p>
+	<p class="font-sans">Coming from the flashback.</p>
 </div>

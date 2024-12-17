@@ -19,7 +19,7 @@
 			<a href="/" class="group relative text-black" use:link>
 				Home
 				<span
-					class="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-400 transition-all group-hover:w-full"
+					class="bg-amber_SAE_ECE absolute bottom-0 left-0 h-0.5 w-0 transition-all group-hover:w-full"
 				></span>
 			</a>
 		</li>
@@ -27,7 +27,7 @@
 			<a href="/about" class="group relative text-black" use:link>
 				About
 				<span
-					class="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-400 transition-all group-hover:w-full"
+					class="bg-amber_SAE_ECE absolute bottom-0 left-0 h-0.5 w-0 transition-all group-hover:w-full"
 				></span>
 			</a>
 		</li>

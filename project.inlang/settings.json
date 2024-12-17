@@ -13,5 +13,5 @@
 		"pathPattern": "./messages/{languageTag}.json"
 	},
 	"sourceLanguageTag": "en",
-	"languageTags": ["en", "th"]
+	"languageTags": ["en", "th", "jp"]
 }

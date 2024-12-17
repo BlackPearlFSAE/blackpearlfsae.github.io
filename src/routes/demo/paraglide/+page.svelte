@@ -16,4 +16,5 @@
 <div>
 	<button onclick={() => switchToLanguage('en')}>en</button>
 	<button onclick={() => switchToLanguage('th')}>th</button>
+	<button onclick={() => switchToLanguage('jp')}>jp</button>
 </div>

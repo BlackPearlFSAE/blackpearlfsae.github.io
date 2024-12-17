@@ -14,8 +14,21 @@ jobs:
       - name: Install Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          export BUN_BIN=$(bun --version)
-          echo "Bun version: $BUN_BIN"
+          export PATH="$HOME/.bun/bin:$PATH"
+          echo "Bun installed successfully"
+
+      - name: Verify Bun installation
+        run: |
+          bun --version
+
+      # Caching Bun dependencies
+      - name: Cache Bun dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.bun/cache
+          key: ${{ runner.os }}-bun-cache-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-cache-
 
       - name: Install dependencies
         run: bun install

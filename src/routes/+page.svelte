@@ -7,7 +7,9 @@
 </svelte:head>
 
 <div class="p-2">
-	<p class="font-sans text-3xl font-bold hover:font-serif">Black Pearl Racing Team</p>
+	<p class="font-sans text-3xl font-bold hover:font-serif hover:font-medium">
+		Black Pearl Racing Team
+	</p>
 	<p>@ KMUTT</p>
 
 	<div>

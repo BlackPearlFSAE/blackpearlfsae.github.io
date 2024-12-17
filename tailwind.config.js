@@ -11,7 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Bricolage Grotesque Variable', ...defaultTheme.fontFamily.sans]
+        sans: ['Bricolage Grotesque Variable', ...defaultTheme.fontFamily.sans],
+        // serif: ['Young Serif', ...defaultTheme.fontFamily.serif]
       },
       colors: {
         transparent: 'transparent',

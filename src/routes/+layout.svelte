@@ -8,3 +8,7 @@
 <ParaglideJS {i18n}>
 	{@render children()}
 </ParaglideJS>
+
+<svelte:head>
+	<title>Black Pearl Racing Team - KMUTT</title>
+</svelte:head>

@@ -14,11 +14,10 @@ jobs:
       - name: Install Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          export PATH="$HOME/.bun/bin:$PATH"
           echo "Bun installed successfully"
-
-      - name: Verify Bun installation
-        run: |
+          # Add Bun to PATH for the current session
+          export PATH="$HOME/.bun/bin:$PATH"
+          # Check if Bun is installed
           bun --version
 
       # Caching Bun dependencies
@@ -31,12 +30,16 @@ jobs:
             ${{ runner.os }}-bun-cache-
 
       - name: Install dependencies
-        run: bun install
+        run: |
+          export PATH="$HOME/.bun/bin:$PATH"
+          bun install
 
       - name: Build project
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
-        run: bun run build
+        run: |
+          export PATH="$HOME/.bun/bin:$PATH"
+          bun run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

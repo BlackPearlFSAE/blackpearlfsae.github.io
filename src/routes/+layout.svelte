@@ -23,7 +23,7 @@
 </svelte:head>
 
 <nav class="p-2">
-	<ul class="flex space-x-2">
+	<ul class="flex space-x-4">
 		{#each navItems as { href, label }}
 			<li>
 				<a {href} class="group relative text-black">

@@ -14,7 +14,8 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
 		{ href: '/team', label: 'Team' },
-		{ href: '/sponsor', label: 'Sponsor' }
+		{ href: '/sponsor', label: 'Sponsor' },
+		{ href: '/tools', label: 'Tools' }
 	];
 </script>
 
@@ -29,7 +30,7 @@
 				<a {href} class="group relative text-black">
 					{label}
 					<span
-						class="bg-amber_SAE_ECE absolute bottom-0 left-0 h-0.5 w-0 transition-all group-hover:w-full"
+						class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
 					></span>
 				</a>
 			</li>

@@ -40,6 +40,7 @@ You can preview the production build with `npm run preview`.
 ## Credits:
 
 Font setup:
+- https://tailwindcss.com/docs/font-family
 - https://www.youtube.com/watch?v=TKKpVlZRFLc
 - https://fontsource.org/fonts/bricolage-grotesque/install
 - https://fontsource.org/fonts/young-serif/install

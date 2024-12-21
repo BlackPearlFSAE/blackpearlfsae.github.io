@@ -12,21 +12,14 @@
 		<a
 			href="https://www.fsaeonline.com/"
 			target="_blank"
-			class="font-semibold text-amber_SAE_ECE">Formula Student
-<span
-							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
-						></span>
-</a
-		>
+			class="font-semibold text-amber_SAE_ECE hover:underline">Formula Student
+		</a>
 		team of
 		<a
 			href="https://www.kmutt.ac.th/"
 			target="_blank"
-			class="font-semibold text-amber_SAE_ECE">KMUTT
-<span
-							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
-						></span></a
-		>.
+			class="font-semibold text-amber_SAE_ECE hover:underline">KMUTT
+		</a>.
 	</p>
 
 	<!-- TODO: Hero text concept -->

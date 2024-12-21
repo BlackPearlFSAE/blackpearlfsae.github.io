@@ -12,6 +12,11 @@
 	</p>
 	<p>@ KMUTT</p>
 
+	<!-- TODO: Hero text concept -->
+	<!-- We represent KMUTT's finest craftsmanship in the world's biggest engineering design competition. -->
+
+	<!-- We invite you to join ... if you are ... -->
+
 	<div>
 		<iframe
 			width="560"

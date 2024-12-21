@@ -25,30 +25,36 @@
 	<title>{baseTitle}</title>
 </svelte:head>
 
-<nav class="p-2">
-	<ul class="flex space-x-4">
-		{#each navItems as { href, label }}
-			<li>
-				<a {href} class="group relative text-black">
-					{label}
-					<span
-						class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
-					></span>
-				</a>
-			</li>
-		{/each}
-	</ul>
-</nav>
+<!-- Fix: for fixed/sticky footer on the bottom -->
+<!-- https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom -->
+<div class="flex h-screen flex-col">
+	<nav class="p-2">
+		<ul class="flex space-x-4">
+			{#each navItems as { href, label }}
+				<li>
+					<a {href} class="group relative text-black">
+						{label}
+						<span
+							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
+						></span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 
-<main class="flex min-h-screen flex-col">
-	<!-- <ParaglideJS {i18n}>
+	<!-- old main setup -->
+	<!-- <main class="flex min-h-screen grow flex-col"> -->
+	<main class="flex-grow">
+		<!-- <ParaglideJS {i18n}>
 	{@render children()}
 </ParaglideJS> -->
 
-	{@render children()}
+		{@render children()}
+	</main>
 
 	<Footer />
-</main>
+</div>
 
 <style>
 	* {

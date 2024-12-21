@@ -28,4 +28,4 @@
 	<!-- We invite you to join ... if you are ... -->
 </div>
 
-<div class="h-[20rem]"></div>
+<!-- <div class="h-[20rem]"></div> -->

@@ -14,9 +14,10 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
 		{ href: '/team', label: 'Team' },
-		{ href: '/sponsor', label: 'Sponsor' },
+		{ href: '/sponsor', label: 'Sponsors' },
+		{ href: '/merch', label: 'Merch' },
 		{ href: '/tools', label: 'Tools' },
-		{ href: '/merch', label: 'Merch' }
+		{ href: '/archives', label: 'Archives' }
 	];
 </script>
 

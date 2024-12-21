@@ -1,5 +1,5 @@
 <!-- src/lib/Footer.svelte -->
-<footer class="border-t-4 border-t-amber_SAE_ECE bg-baby_powder py-4 text-blackie">
+<footer class="border-t-4 border-t-coqueilcot bg-baby_powder py-4 text-blackie">
 	<div class="container mx-auto mt-auto text-center">
 		<p>&copy; {new Date().getFullYear()} Black Pearl Racing Team <br /> @ KMUTT</p>
 		<p>

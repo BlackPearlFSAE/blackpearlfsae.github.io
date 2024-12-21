@@ -17,7 +17,7 @@
 	<p>Anyways, here are the things coming soon.</p>
 
 	<ul>
-		<li>IG/Socials Template App (more details later)</li>
+		<li>IG/Socials Template App (more details later)  </li>
 		<li>PDF splitter/merger tool</li>
 		<li>STL/STEP viewer</li>
 	</ul>

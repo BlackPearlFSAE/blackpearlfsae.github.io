@@ -36,3 +36,12 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Credits:
+
+Font setup:
+- https://www.youtube.com/watch?v=TKKpVlZRFLc
+- https://fontsource.org/fonts/bricolage-grotesque/install
+- https://fontsource.org/fonts/young-serif/install
+- https://stackoverflow.com/questions/74062982/how-do-i-use-fonts-downloaded-from-npm-fontsource-with-tailwind-css
+- https://www.youtube.com/watch?v=O_oXb3JSyrI

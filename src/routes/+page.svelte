@@ -12,13 +12,15 @@
 		<a
 			href="https://www.fsaeonline.com/"
 			target="_blank"
-			class="font-semibold text-amber_SAE_ECE hover:underline">Formula Student
+			class="font-semibold text-coqueilcot hover:underline"
+			>Formula Student
 		</a>
 		team of
 		<a
 			href="https://www.kmutt.ac.th/"
 			target="_blank"
-			class="font-semibold text-amber_SAE_ECE hover:underline">KMUTT
+			class="font-semibold text-coqueilcot hover:underline"
+			>KMUTT
 		</a>.
 	</p>
 

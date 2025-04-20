@@ -11,3 +11,5 @@
 </svelte:head>
 
 <p class="p-2 font-extrabold italic text-gray-600">Coming soon...</p>
+
+<img src="/cars/BP16.png" alt="BP16" />

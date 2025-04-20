@@ -5,13 +5,20 @@
 
 	let pageTitle = 'Team';
 
-	const leadership = [
-		{ name: 'John Doe', role: 'Captain', year: '2025', avatar: '/team/john_doe.jpg' },
-		{ name: 'Jane Smith', role: 'Vice Captain', year: '2025', avatar: '/team/jane_smith.jpg' },
-		{ name: 'Dr. Alan Turing', role: 'Faculty Advisor', year: '', avatar: '/team/alan_turing.jpg' }
-	];
-
 	const departments = [
+		{
+			name: 'Leadership',
+			members: [
+				{ name: 'John Doe', role: 'Captain', year: '2025', avatar: '/team/john_doe.jpg' },
+				{ name: 'Jane Smith', role: 'Vice Captain', year: '2025', avatar: '/team/jane_smith.jpg' },
+				{
+					name: 'Dr. Alan Turing',
+					role: 'Faculty Advisor',
+					year: '',
+					avatar: '/team/alan_turing.jpg'
+				}
+			]
+		},
 		{
 			name: 'Mechanical',
 			subDepartments: [
@@ -86,7 +93,7 @@
 			]
 		},
 		{
-			name: 'Business Presentation',
+			name: 'Business Development Group',
 			members: [
 				{ name: 'Ian Curtis', role: 'Presenter', year: '2024', avatar: '/team/ian_curtis.jpg' },
 				{
@@ -104,6 +111,19 @@
 			]
 		}
 	];
+
+	// Define department options
+	const departmentOptions = [
+		'All',
+		'Leadership',
+		'Mechanical',
+		'Electrical',
+		'Admin, Finance & Sponsor',
+		'Business Development Group'
+	];
+
+	// Variable to hold the selected department
+	let selectedDepartment = 'All';
 </script>
 
 <svelte:head>
@@ -116,87 +136,81 @@
 			<h1 class="text-center text-4xl font-bold">Our Team Strength - 2025/2026</h1>
 			<!-- <p class="font-sans">In a winter vacation.</p> -->
 		</div>
-		<!-- Leadership Section -->
-		<div class="mb-12">
-			<div class="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-				{#each leadership as member}
-					<div
-						class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
-					>
-						<img
-							src={member.avatar}
-							alt={member.name}
-							class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
-						/>
-						<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-						<p class="text-sm">{member.role}</p>
-						{#if member.year}
-							<p class="text-sm font-semibold">
-								Class of {member.year}
-								<!-- CPE #65 -->
-							</p>
-						{/if}
-					</div>
-				{/each}
-			</div>
-		</div>
 
 		<!-- Department Sections -->
-		{#each departments as department}
-			<div class="mb-12">
-				<h2 class="mb-6 text-center text-2xl font-bold text-amber_SAE_ECE">{department.name}</h2>
 
-				{#if department.subDepartments}
-					{#each department.subDepartments as subDept}
-						<div class="mb-6">
-							<h3 class="mb-4 text-xl font-semibold text-coqueilcot">{subDept.name}</h3>
-							<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-								{#each subDept.members as member}
-									<div
-										class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
-									>
-										<img
-											src={member.avatar}
-											alt={member.name}
-											class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
-										/>
-										<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-										<p class="text-sm">{member.role}</p>
-										{#if member.year}
-											<p class="text-sm font-semibold">
-												Class of {member.year}
-												<!-- CPE #65 -->
-											</p>
-										{/if}
-									</div>
-								{/each}
-							</div>
-						</div>
-					{/each}
-				{:else}
-					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-						{#each department.members as member}
-							<div
-								class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
-							>
-								<img
-									src={member.avatar}
-									alt={member.name}
-									class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
-								/>
-								<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-								<p class="text-sm">{member.role}</p>
-								{#if member.year}
-									<p class="text-sm font-semibold">
-										Class of {member.year}
-										<!-- CPE #65 -->
-									</p>
-								{/if}
+		<!-- Department Selector -->
+		<div class="mb-6 flex flex-wrap justify-center gap-2">
+			{#each departmentOptions as dept}
+				<button
+					on:click={() => (selectedDepartment = dept)}
+					class={`rounded-md border px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+						selectedDepartment === dept
+							? 'border-coqueilcot bg-coqueilcot text-white'
+							: 'border-gray-300 bg-white text-blackie hover:border-coqueilcot hover:bg-coqueilcot hover:text-white'
+					}`}
+				>
+					{dept}
+				</button>
+			{/each}
+		</div>
+		{#each departments as department}
+			{#if selectedDepartment === 'All' || department.name === selectedDepartment}
+				<div class="mb-12">
+					<h2 class="mb-6 text-center text-2xl font-bold text-amber_SAE_ECE">{department.name}</h2>
+
+					{#if department.subDepartments}
+						{#each department.subDepartments as subDept}
+							<div class="mb-6">
+								<h3 class="mb-4 text-xl font-semibold text-coqueilcot">{subDept.name}</h3>
+								<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+									{#each subDept.members as member}
+										<div
+											class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
+										>
+											<img
+												src={member.avatar}
+												alt={member.name}
+												class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
+											/>
+											<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
+											<p class="text-sm">{member.role}</p>
+											{#if member.year}
+												<p class="text-sm font-semibold">
+													Class of {member.year}
+													<!-- CPE #65 -->
+												</p>
+											{/if}
+										</div>
+									{/each}
+								</div>
 							</div>
 						{/each}
-					</div>
-				{/if}
-			</div>
+					{:else}
+						<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+							{#each department.members as member}
+								<div
+									class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
+								>
+									<img
+										src={member.avatar}
+										alt={member.name}
+										class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
+									/>
+									<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
+									<p class="text-sm">{member.role}</p>
+									{#if member.year}
+										<p class="text-sm font-semibold">
+											Class of {member.year}
+											<!-- CPE #65 -->
+										</p>
+									{/if}
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</div>
+			{/if}
 		{/each}
 	</div>
 </section>

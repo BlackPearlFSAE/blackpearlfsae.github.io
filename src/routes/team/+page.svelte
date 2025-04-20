@@ -6,111 +6,132 @@
 	let pageTitle = 'Team';
 
 	const departments = [
-		{
-			name: 'Leadership (LEAD)',
-			members: [
-				{ name: 'John Doe', role: 'Captain', year: '2025', avatar: '/team/john_doe.jpg' },
-				{ name: 'Jane Smith', role: 'Vice Captain', year: '2025', avatar: '/team/jane_smith.jpg' },
-				{
-					name: 'Dr. Alan Turing',
-					role: 'Faculty Advisor',
-					year: '',
-					avatar: '/team/alan_turing.jpg'
-				}
-			]
-		},
-		{
-			name: 'Mechanical (MECH)',
-			subDepartments: [
-				{
-					name: 'Powertrain',
-					members: [
-						{
-							name: 'Alice Johnson',
-							role: 'Engine Lead',
-							year: '2024',
-							avatar: '/team/alice_johnson.jpg'
-						},
-						{
-							name: 'Bob Lee',
-							role: 'Transmission Specialist',
-							year: '2025',
-							avatar: '/team/bob_lee.jpg'
-						}
-					]
-				},
-				{
-					name: 'Body & Frame',
-					members: [
-						{
-							name: 'Charlie Kim',
-							role: 'Chassis Engineer',
-							year: '2024',
-							avatar: '/team/charlie_kim.jpg'
-						}
-					]
-				},
-				{
-					name: 'Suspension',
-					members: [
-						{
-							name: 'Diana Ross',
-							role: 'Suspension Analyst',
-							year: '2025',
-							avatar: '/team/diana_ross.jpg'
-						}
-					]
-				}
-			]
-		},
-		{
-			name: 'Electrical (ELEC)',
-			members: [
-				{ name: 'Ethan Hunt', role: 'Wiring Lead', year: '2024', avatar: '/team/ethan_hunt.jpg' },
-				{
-					name: 'Fiona Gallagher',
-					role: 'Battery Systems',
-					year: '2025',
-					avatar: '/team/fiona_gallagher.jpg'
-				}
-			]
-		},
-		{
-			name: 'Admin, Finance & Sponsor (BSAC)',
-			members: [
-				{
-					name: 'George Michael',
-					role: 'Finance Head',
-					year: '2024',
-					avatar: '/team/george_michael.jpg'
-				},
-				{
-					name: 'Hannah Baker',
-					role: 'Sponsorship Coordinator',
-					year: '2025',
-					avatar: '/team/hannah_baker.jpg'
-				}
-			]
-		},
-		{
-			name: 'Business Development Group (BI)',
-			members: [
-				{ name: 'Ian Curtis', role: 'Presenter', year: '2024', avatar: '/team/ian_curtis.jpg' },
-				{
-					name: 'Julia Roberts',
-					role: 'Content Developer',
-					year: '2025',
-					avatar: '/team/julia_roberts.jpg'
-				},
-				{
-					name: 'Kevin Spacey',
-					role: 'Visual Designer',
-					year: '2025',
-					avatar: '/team/kevin_spacey.jpg'
-				}
-			]
-		}
-	];
+  {
+    name: 'Leadership (LEAD)',
+    members: [
+      {
+        name: 'John Doe',
+        role: 'Captain',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/1.jpg'
+      },
+      {
+        name: 'Jane Smith',
+        role: 'Vice Captain',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/2.jpg'
+      },
+      {
+        name: 'Dr. Alan Turing',
+        role: 'Faculty Advisor',
+        year: '',
+        avatar: 'https://loremfaces.net/96/id/3.jpg'
+      }
+    ]
+  },
+  {
+    name: 'Mechanical (MECH)',
+    subDepartments: [
+      {
+        name: 'Powertrain',
+        members: [
+          {
+            name: 'Alice Johnson',
+            role: 'Engine Lead',
+            year: '2024',
+            avatar: 'https://loremfaces.net/96/id/4.jpg'
+          },
+          {
+            name: 'Bob Lee',
+            role: 'Transmission Specialist',
+            year: '2025',
+            avatar: 'https://loremfaces.net/96/id/5.jpg'
+          }
+        ]
+      },
+      {
+        name: 'Body & Frame',
+        members: [
+          {
+            name: 'Charlie Kim',
+            role: 'Chassis Engineer',
+            year: '2024',
+            avatar: 'https://loremfaces.net/96/id/1.jpg'
+          }
+        ]
+      },
+      {
+        name: 'Suspension',
+        members: [
+          {
+            name: 'Diana Ross',
+            role: 'Suspension Analyst',
+            year: '2025',
+            avatar: 'https://loremfaces.net/96/id/2.jpg'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Electrical (ELEC)',
+    members: [
+      {
+        name: 'Ethan Hunt',
+        role: 'Wiring Lead',
+        year: '2024',
+        avatar: 'https://loremfaces.net/96/id/3.jpg'
+      },
+      {
+        name: 'Fiona Gallagher',
+        role: 'Battery Systems',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/4.jpg'
+      }
+    ]
+  },
+  {
+    name: 'Admin, Finance & Sponsor (BSAC)',
+    members: [
+      {
+        name: 'George Michael',
+        role: 'Finance Head',
+        year: '2024',
+        avatar: 'https://loremfaces.net/96/id/5.jpg'
+      },
+      {
+        name: 'Hannah Baker',
+        role: 'Sponsorship Coordinator',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/1.jpg'
+      }
+    ]
+  },
+  {
+    name: 'Business Development Group (BI)',
+    members: [
+      {
+        name: 'Ian Curtis',
+        role: 'Presenter',
+        year: '2024',
+        avatar: 'https://loremfaces.net/96/id/2.jpg'
+      },
+      {
+        name: 'Julia Roberts',
+        role: 'Content Developer',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/3.jpg'
+      },
+      {
+        name: 'Kevin Spacey',
+        role: 'Visual Designer',
+        year: '2025',
+        avatar: 'https://loremfaces.net/96/id/4.jpg'
+      }
+    ]
+  }
+];
+
 
 	// Define department options
 	const departmentOptions = [

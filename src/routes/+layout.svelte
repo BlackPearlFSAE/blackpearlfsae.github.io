@@ -13,6 +13,7 @@
 	const navItems = [
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
+		{ href: '/cars', label: 'Cars' },
 		{ href: '/team', label: 'Team' },
 		{ href: '/sponsor', label: 'Sponsors' },
 		{ href: '/merch', label: 'Merch' },

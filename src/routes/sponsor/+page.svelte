@@ -10,7 +10,8 @@
 	<title>{pageTitle}</title>
 </svelte:head>
 
-<div class="bg-baby_powder text-blackie p-2">
+<div class="bg-baby_powder p-2 text-blackie">
 	<h1 class="text-3xl font-bold">Our Sponsors</h1>
-	<p class="font-sans">See you again.</p>
+	<br />
+	<p class="font-extrabold italic text-gray-600">Coming soon...</p>
 </div>

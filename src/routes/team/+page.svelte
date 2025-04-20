@@ -7,7 +7,7 @@
 
 	const departments = [
 		{
-			name: 'Leadership',
+			name: 'Leadership (LEAD)',
 			members: [
 				{ name: 'John Doe', role: 'Captain', year: '2025', avatar: '/team/john_doe.jpg' },
 				{ name: 'Jane Smith', role: 'Vice Captain', year: '2025', avatar: '/team/jane_smith.jpg' },
@@ -20,7 +20,7 @@
 			]
 		},
 		{
-			name: 'Mechanical',
+			name: 'Mechanical (MECH)',
 			subDepartments: [
 				{
 					name: 'Powertrain',
@@ -64,7 +64,7 @@
 			]
 		},
 		{
-			name: 'Electrical',
+			name: 'Electrical (ELEC)',
 			members: [
 				{ name: 'Ethan Hunt', role: 'Wiring Lead', year: '2024', avatar: '/team/ethan_hunt.jpg' },
 				{
@@ -76,7 +76,7 @@
 			]
 		},
 		{
-			name: 'Admin, Finance & Sponsor',
+			name: 'Admin, Finance & Sponsor (BSAC)',
 			members: [
 				{
 					name: 'George Michael',
@@ -93,7 +93,7 @@
 			]
 		},
 		{
-			name: 'Business Development Group',
+			name: 'Business Development Group (BI)',
 			members: [
 				{ name: 'Ian Curtis', role: 'Presenter', year: '2024', avatar: '/team/ian_curtis.jpg' },
 				{
@@ -115,11 +115,11 @@
 	// Define department options
 	const departmentOptions = [
 		'All',
-		'Leadership',
-		'Mechanical',
-		'Electrical',
-		'Admin, Finance & Sponsor',
-		'Business Development Group'
+		'Leadership (LEAD)',
+		'Mechanical (MECH)',
+		'Electrical (ELEC)',
+		'Admin, Finance & Sponsor (BSAC)',
+		'Business Development Group (BI)'
 	];
 
 	// Variable to hold the selected department

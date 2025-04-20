@@ -20,6 +20,8 @@
 		{ href: '/tools', label: 'Tools' },
 		{ href: '/archives', label: 'Archives' }
 	];
+	// TODO: Blogs (more work to do in or replace with Medium/Dev.to account for better reach)
+	// TODO: Research publications
 
 	let isMenuOpen = $state(false);
 

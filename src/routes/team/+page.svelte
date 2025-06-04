@@ -12,18 +12,18 @@
       {
         name: 'Namo',
         role: 'Captain',
-        year: 'Year 2, Civil Eng.',
+        year: 'Year 3, CVE',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
         name: 'Folk',
         role: 'Vice Captain',
-        year: 'Year 3, Automotive Eng.',
+        year: 'Year 4, AME',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
         name: 'Ajarn Danai',
-        role: 'Faculty Advisor',
+        role: 'Club Advisor',
         year: '',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       }

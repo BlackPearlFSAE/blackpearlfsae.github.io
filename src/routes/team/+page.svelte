@@ -12,14 +12,14 @@
       {
         name: 'Namo',
         role: 'Captain',
-        year: '2025',
+        year: 'Year 2, Civil Eng.',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
         name: 'Folk',
         role: 'Vice Captain',
-        year: '2025',
-        avatar: 'https://loremfaces.net/96/id/2.jpg'
+        year: 'Year 3, Automotive Eng.',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
         name: 'Ajarn Danai',

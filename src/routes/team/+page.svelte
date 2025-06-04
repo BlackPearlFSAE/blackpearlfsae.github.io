@@ -10,22 +10,22 @@
     name: 'Leadership (LEAD)',
     members: [
       {
-        name: 'John Doe',
+        name: 'Namo',
         role: 'Captain',
         year: '2025',
-        avatar: 'https://loremfaces.net/96/id/1.jpg'
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Jane Smith',
+        name: 'Folk',
         role: 'Vice Captain',
         year: '2025',
         avatar: 'https://loremfaces.net/96/id/2.jpg'
       },
       {
-        name: 'Dr. Alan Turing',
+        name: 'Ajarn Danai',
         role: 'Faculty Advisor',
         year: '',
-        avatar: 'https://loremfaces.net/96/id/3.jpg'
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       }
     ]
   },

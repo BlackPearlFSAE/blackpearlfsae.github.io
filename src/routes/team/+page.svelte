@@ -12,13 +12,15 @@
       {
         name: 'Namo',
         role: 'Captain',
-        year: 'Year 3, CVE',
+        year: 'Year 3, Bachelor',
+	department: 'Civil Engineering',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
         name: 'Folk',
         role: 'Vice Captain',
-        year: 'Year 4, AME',
+        year: 'Year 4, Bachelor',
+	department: 'Automotive Engineering',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
@@ -198,7 +200,13 @@
 											<p class="text-sm">{member.role}</p>
 											{#if member.year}
 												<p class="text-sm font-semibold">
-													Class of {member.year}
+													{member.year}
+													<!-- CPE #65 -->
+												</p>
+											{/if}
+											{#if member.department}
+												<p class="text-sm font-bold">
+													{member.department}
 													<!-- CPE #65 -->
 												</p>
 											{/if}

@@ -17,10 +17,10 @@
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Folk',
+        name: 'Tanny',
         role: 'Vice Captain',
-        year: 'Year 4, Bachelor',
-	department: 'Automotive Engineering',
+        year: 'Year 3, Bachelor',
+	department: 'Electronics and Network Engineering',
         avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
@@ -38,16 +38,28 @@
         name: 'Powertrain',
         members: [
           {
-            name: 'Alice Johnson',
-            role: 'Engine Lead',
-            year: '2024',
-            avatar: 'https://loremfaces.net/96/id/4.jpg'
+            name: 'Dawin',
+            role: 'Specialist, Head of Dept.',
+            year: 'Year 2, Mechanical Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
           },
           {
-            name: 'Bob Lee',
-            role: 'Transmission Specialist',
-            year: '2025',
-            avatar: 'https://loremfaces.net/96/id/5.jpg'
+            name: 'Pan',
+            role: 'Specialist',
+            year: 'Year 2, Automotive Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+	  {
+            name: 'IK-Q',
+            role: 'Specialist',
+            year: 'Year 2, Mechanical Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+          {
+            name: 'Goody',
+            role: 'Specialist',
+            year: 'Year 2, Automotive Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
           }
         ]
       },
@@ -55,22 +67,46 @@
         name: 'Body & Frame',
         members: [
           {
-            name: 'Charlie Kim',
-            role: 'Chassis Engineer',
-            year: '2024',
-            avatar: 'https://loremfaces.net/96/id/1.jpg'
-          }
+            name: 'Namo',
+            role: 'Chassis (Steel Space Frame)',
+            year: 'Year 3, Civil Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+	   {
+            name: 'Skoog',
+            role: 'Specialist',
+            year: 'Year 1, Master Degree',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          }	
         ]
       },
       {
         name: 'Suspension',
         members: [
-          {
-            name: 'Diana Ross',
-            role: 'Suspension Analyst',
-            year: '2025',
-            avatar: 'https://loremfaces.net/96/id/2.jpg'
-          }
+         {
+            name: 'Folk',
+            role: 'Head of Department',
+            year: 'Year 4, Automotive Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+	{
+            name: 'Dutch',
+            role: 'Specialist',
+            year: 'Year 2, Mechanical Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+	{
+            name: 'Copter',
+            role: 'Specialist',
+            year: 'Year 2, Mechanical Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
+	{
+            name: 'Print',
+            role: 'Brake Specialist',
+            year: 'Year 2, Mechanical Engineering',
+            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+          },
         ]
       }
     ]
@@ -79,16 +115,16 @@
     name: 'Electrical (ELEC)',
     members: [
       {
-        name: 'Ethan Hunt',
-        role: 'Wiring Lead',
-        year: '2024',
-        avatar: 'https://loremfaces.net/96/id/3.jpg'
+        name: 'Tanny',
+        role: 'Head of Dept., High Voltage Specialist',
+        year: 'Year 3, Electronics and Network Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Fiona Gallagher',
-        role: 'Battery Systems',
-        year: '2025',
-        avatar: 'https://loremfaces.net/96/id/4.jpg'
+        name: 'Jackie',
+        role: 'Low Voltage System Specialist',
+        year: 'Year 3, Computer Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       }
     ]
   },
@@ -96,39 +132,45 @@
     name: 'Admin, Finance & Sponsor (BSAC)',
     members: [
       {
-        name: 'George Michael',
+        name: 'Chamint',
         role: 'Finance Head',
-        year: '2024',
-        avatar: 'https://loremfaces.net/96/id/5.jpg'
+        year: 'Year 3, Tools and Materials Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Hannah Baker',
-        role: 'Sponsorship Coordinator',
-        year: '2025',
-        avatar: 'https://loremfaces.net/96/id/1.jpg'
+        name: 'Nott',
+        role: 'Finance Specialist',
+        year: 'Year 2, Mechanical Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+      },
+      {
+        name: 'Jubjang',
+        role: 'Sponsor Relations Specialist',
+        year: 'Year 2, Tools and Materials Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       }
     ]
   },
   {
-    name: 'Business Development Group (BI)',
+    name: 'Systems Development Group (SYS)',
     members: [
       {
-        name: 'Ian Curtis',
-        role: 'Presenter',
-        year: '2024',
-        avatar: 'https://loremfaces.net/96/id/2.jpg'
+        name: 'Yoo-il',
+        role: 'Head of Dept., Control Systems Specialist',
+        year: 'Year 4, Computer Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Julia Roberts',
-        role: 'Content Developer',
-        year: '2025',
-        avatar: 'https://loremfaces.net/96/id/3.jpg'
+        name: 'Toen',
+        role: 'Specialist, core electronics',
+        year: 'Year 3, Electronics and Network Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       },
       {
-        name: 'Kevin Spacey',
-        role: 'Visual Designer',
-        year: '2025',
-        avatar: 'https://loremfaces.net/96/id/4.jpg'
+        name: 'Angy',
+        role: 'Specialist, Design Thinking',
+        year: 'Year 2, Electronics and Network Engineering',
+        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
       }
     ]
   }
@@ -142,7 +184,7 @@
 		'Mechanical (MECH)',
 		'Electrical (ELEC)',
 		'Admin, Finance & Sponsor (BSAC)',
-		'Business Development Group (BI)'
+		'Systems Development Group (SYS)'
 	];
 
 	// Variable to hold the selected department

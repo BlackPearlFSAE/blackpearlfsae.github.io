@@ -276,6 +276,12 @@
 											<!-- CPE #65 -->
 										</p>
 									{/if}
+									{#if member.department}
+										<p class="text-sm font-bold">
+											{member.department}
+											<!-- CPE #65 -->
+										</p>
+									{/if}
 								</div>
 							{/each}
 						</div>

@@ -272,7 +272,7 @@
 									<p class="text-sm">{member.role}</p>
 									{#if member.year}
 										<p class="text-sm font-semibold">
-											Class of {member.year}
+											{member.year}
 											<!-- CPE #65 -->
 										</p>
 									{/if}

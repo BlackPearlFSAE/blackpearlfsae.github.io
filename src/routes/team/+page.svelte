@@ -6,176 +6,222 @@
 	let pageTitle = 'Team';
 
 	const departments = [
-  {
-    name: 'Leadership (LEAD)',
-    members: [
-      {
-        name: 'Namo',
-        role: 'Captain',
-        year: 'Year 3, Bachelor',
-	department: 'Civil Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Tanny',
-        role: 'Vice Captain',
-        year: 'Year 3, Bachelor',
-	department: 'Electronics and Network Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Ajarn Danai',
-        role: 'Club Advisor',
-        year: '',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      }
-    ]
-  },
-  {
-    name: 'Mechanical (MECH)',
-    subDepartments: [
-      {
-        name: 'Powertrain',
-        members: [
-          {
-            name: 'Dawin',
-            role: 'Specialist, Head of Dept.',
-            year: 'Year 2, Mechanical Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-          {
-            name: 'Pan',
-            role: 'Specialist',
-            year: 'Year 2, Automotive Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-	  {
-            name: 'IK-Q',
-            role: 'Specialist',
-            year: 'Year 2, Mechanical Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-          {
-            name: 'Goody',
-            role: 'Specialist',
-            year: 'Year 2, Automotive Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          }
-        ]
-      },
-      {
-        name: 'Body & Frame',
-        members: [
-          {
-            name: 'Namo',
-            role: 'Chassis (Steel Space Frame)',
-            year: 'Year 3, Civil Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-	   {
-            name: 'Skoog',
-            role: 'Specialist',
-            year: 'Year 1, Master Degree',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          }	
-        ]
-      },
-      {
-        name: 'Suspension',
-        members: [
-         {
-            name: 'Folk',
-            role: 'Head of Department',
-            year: 'Year 4, Automotive Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-	{
-            name: 'Dutch',
-            role: 'Specialist',
-            year: 'Year 2, Mechanical Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-	{
-            name: 'Copter',
-            role: 'Specialist',
-            year: 'Year 2, Mechanical Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-	{
-            name: 'Print',
-            role: 'Brake Specialist',
-            year: 'Year 2, Mechanical Engineering',
-            avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-          },
-        ]
-      }
-    ]
-  },
-  {
-    name: 'Electrical (ELEC)',
-    members: [
-      {
-        name: 'Tanny',
-        role: 'Head of Dept., High Voltage Specialist',
-        year: 'Year 3, Electronics and Network Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Jackie',
-        role: 'Low Voltage System Specialist',
-        year: 'Year 3, Computer Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      }
-    ]
-  },
-  {
-    name: 'Admin, Finance & Sponsor (BSAC)',
-    members: [
-      {
-        name: 'Chamint',
-        role: 'Finance Head',
-        year: 'Year 3, Tools and Materials Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Nott',
-        role: 'Finance Specialist',
-        year: 'Year 2, Mechanical Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Jubjang',
-        role: 'Sponsor Relations Specialist',
-        year: 'Year 2, Tools and Materials Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      }
-    ]
-  },
-  {
-    name: 'Systems Development Group (SYS)',
-    members: [
-      {
-        name: 'Yoo-il',
-        role: 'Head of Dept., Control Systems Specialist',
-        year: 'Year 4, Computer Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Toen',
-        role: 'Specialist, core electronics',
-        year: 'Year 3, Electronics and Network Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      },
-      {
-        name: 'Angy',
-        role: 'Specialist, Design Thinking',
-        year: 'Year 2, Electronics and Network Engineering',
-        avatar: 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-      }
-    ]
-  }
-];
-
+		{
+			name: 'Advisory Professors (ADVISOR)',
+			members: [
+				{
+					name: 'Asst. Prof. Dr. Danai Phaoharuhansa',
+					role: 'Team Advisor',
+					// year: 'D.Eng., Shibaura Institute of Technology, Japan, 2014',
+					department: 'Control Laboratory, KMUTT',
+					avatar: './teams/people/advisor/AjDanai.jpg'
+				},
+				{
+					name: 'Assoc. Prof. Dr. Anak Khantachawana',
+					role: 'Technical Advisor',
+					// year: 'D.Eng., University of Tsukuba, Japan, 2003',
+					department: 'SMART Laboratory, KMUTT',
+					avatar: './teams/people/advisor/AjEarth.jpg'
+				},
+				{
+					name: 'Assoc. Prof. Dr. Chawin Chantharasenawong',
+					role: 'Technical Advisor',
+					// year: 'Ph.D., Imperial College London, UK, 2007',
+					department: 'International Affairs, KMUTT',
+					avatar: './teams/people/advisor/AjChawin.jpg'
+				}
+			]
+		},
+		{
+			name: 'Leadership (LEAD)',
+			members: [
+				{
+					name: 'Namo',
+					role: 'Captain',
+					year: 'Year 3, Bachelor',
+					department: 'Civil Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Tanny',
+					role: 'Vice Captain',
+					year: 'Year 3, Bachelor',
+					department: 'Electronics and Network Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Ajarn Danai',
+					role: 'Club Advisor',
+					year: '',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			]
+		},
+		{
+			name: 'Mechanical (MECH)',
+			subDepartments: [
+				{
+					name: 'Powertrain',
+					members: [
+						{
+							name: 'Dawin',
+							role: 'Specialist, Head of Dept.',
+							year: 'Year 2, Mechanical Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Pan',
+							role: 'Specialist',
+							year: 'Year 2, Automotive Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'IK-Q',
+							role: 'Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Goody',
+							role: 'Specialist',
+							year: 'Year 2, Automotive Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
+				},
+				{
+					name: 'Body & Frame',
+					members: [
+						{
+							name: 'Namo',
+							role: 'Chassis (Steel Space Frame)',
+							year: 'Year 3, Civil Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Skoog',
+							role: 'Specialist',
+							year: 'Year 1, Master Degree',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
+				},
+				{
+					name: 'Suspension',
+					members: [
+						{
+							name: 'Folk',
+							role: 'Head of Department',
+							year: 'Year 4, Automotive Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Dutch',
+							role: 'Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Copter',
+							role: 'Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Print',
+							role: 'Brake Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
+				}
+			]
+		},
+		{
+			name: 'Electrical (ELEC)',
+			members: [
+				{
+					name: 'Tanny',
+					role: 'Head of Dept., High Voltage Specialist',
+					year: 'Year 3, Electronics and Network Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Jackie',
+					role: 'Low Voltage System Specialist',
+					year: 'Year 3, Computer Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			]
+		},
+		{
+			name: 'Admin, Finance & Sponsor (BSAC)',
+			members: [
+				{
+					name: 'Chamint',
+					role: 'Finance Head',
+					year: 'Year 3, Tools and Materials Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Nott',
+					role: 'Finance Specialist',
+					year: 'Year 2, Mechanical Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Jubjang',
+					role: 'Sponsor Relations Specialist',
+					year: 'Year 2, Tools and Materials Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			]
+		},
+		{
+			name: 'Systems Development Group (SYS)',
+			members: [
+				{
+					name: 'Yoo-il',
+					role: 'Head of Dept., Control Systems Specialist',
+					year: 'Year 4, Computer Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Toen',
+					role: 'Specialist, core electronics',
+					year: 'Year 3, Electronics and Network Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Angy',
+					role: 'Specialist, Design Thinking',
+					year: 'Year 2, Electronics and Network Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			]
+		}
+	];
 
 	// Define department options
 	const departmentOptions = [
@@ -239,6 +285,7 @@
 												class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
 											/>
 											<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
+											<br />
 											<p class="text-sm">{member.role}</p>
 											{#if member.year}
 												<p class="text-sm font-semibold">
@@ -270,12 +317,14 @@
 									/>
 									<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
 									<p class="text-sm">{member.role}</p>
+									<!-- <br /> -->
 									{#if member.year}
 										<p class="text-sm font-semibold">
 											{member.year}
 											<!-- CPE #65 -->
 										</p>
 									{/if}
+									<br />
 									{#if member.department}
 										<p class="text-sm font-bold">
 											{member.department}

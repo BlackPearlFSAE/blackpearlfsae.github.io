@@ -172,6 +172,12 @@
 							role: 'Head of LV Systems',
 							year: 'Year 3, Computer Engineering',
 							avatar: './teams/people/66CPE_Jackie.png'
+						},
+						{
+							name: 'Mark',
+							role: 'Technician',
+							year: 'Year 1, Electrical Engineering',
+							avatar: './teams/people/68EE_Mark.jpg'
 						}
 					]
 				}
@@ -243,6 +249,20 @@
 					role: 'Specialist, Design Thinking',
 					year: 'Year 2, Electronics and Network Engineering',
 					avatar: './teams/people/67ENE_Angy.jpg'
+				},
+				{
+					name: 'Ken',
+					role: 'IT Specialist',
+					year: 'Year 1, Computer Science',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Wine',
+					role: 'Researcher for ADAS systems',
+					year: 'Master Year 1, Automotive Systems Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
 				}
 			]
 		}

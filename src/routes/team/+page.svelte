@@ -145,16 +145,18 @@
 		},
 		{
 			name: 'Electrical (ELEC)',
+			members: [
+				{
+					name: 'Tanny',
+					role: 'Head of Electrical Department',
+					year: 'Year 3, Electronics and Network Engineering',
+					avatar: './teams/people/66ENE_Tannie.jpg'
+				}
+			],
 			subDepartments: [
 				{
 					name: 'HV System',
 					members: [
-						{
-							name: 'Tanny',
-							role: 'Head of Dept.',
-							year: 'Year 3, Electronics and Network Engineering',
-							avatar: './teams/people/66ENE_Tannie.jpg'
-						},
 						{
 							name: 'Petch',
 							role: 'Technician',
@@ -188,43 +190,55 @@
 			members: [
 				{
 					name: 'Chamint',
-					role: 'Finance Head',
+					role: 'Head of BSAC',
 					year: 'Year 3, Modern Automotive and Aerospace Parts Engineering',
 					avatar: './teams/people/66TME_Chamint.jpg'
+				}
+			],
+			subDepartments: [
+				{
+					name: 'Finance',
+					members: [
+						{
+							name: 'Nott',
+							role: 'Finance Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar: './teams/people/67ME_Nott.png'
+						}
+					]
 				},
 				{
-					name: 'Nott',
-					role: 'Finance Specialist',
-					year: 'Year 2, Mechanical Engineering',
-					avatar: './teams/people/67ME_Nott.png'
-				},
-				{
-					name: 'Jubjang',
-					role: 'Sponsor Relations Specialist',
-					year: 'Year 2, Smart Manufacture and Advanced Tools Engineering',
-					avatar: './teams/people/67TME_jubjang.jpg'
-				},
-				{
-					name: 'Khaimook',
-     				role: 'Sponsor Relations',
-      				year: 'Year 1, Civil Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-				},
-				{
-					name: 'Aoy',
-     				role: 'Sponsor Relations',
-      				year: 'Year 2, Production Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-				},
-				{
-					name: 'Aunda',
-     				role: 'Sponsor Relations',
-      				year: 'Year 1, Modern Automotive and Aerospace Parts Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-				},
+					name: 'Sponsors',
+					members: [
+						{
+							name: 'Jubjang',
+							role: 'Sponsor Relations Specialist',
+							year: 'Year 2, Smart Manufacture and Advanced Tools Engineering',
+							avatar: './teams/people/67TME_jubjang.jpg'
+						},
+						{
+							name: 'Khaimook',
+							role: 'Sponsor Relations',
+							year: 'Year 1, Civil Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Aoy',
+							role: 'Sponsor Relations',
+							year: 'Year 2, Production Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Aunda',
+							role: 'Sponsor Relations',
+							year: 'Year 1, Modern Automotive and Aerospace Parts Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
+				}
 			]
 		},
 		{
@@ -265,6 +279,43 @@
 						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
 				}
 			]
+		},
+		{
+			name: 'Drivers',
+			members: [
+				{
+					name: 'Dawin',
+					role: 'Driver',
+					year: 'Year 2, Mechanical Engineering',
+					avatar: './teams/people/67ME_Dave.jpg'
+				},
+				{
+					name: 'Namo',
+					role: 'Driver',
+					year: 'Year 3, Civil Engineering',
+					avatar: './teams/people/66CVE_Namo.jpg'
+				},
+				{
+					name: 'Jackie',
+					role: 'Driver',
+					year: 'Year 3, Computer Engineering',
+					avatar: './teams/people/66CPE_Jackie.png'
+				},
+				{
+					name: 'Skoog',
+					role: 'Driver',
+					year: 'Year 1, Master Degree',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Copter',
+					role: 'Driver',
+					year: 'Year 2, Automotive Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			]
 		}
 	];
 
@@ -275,11 +326,21 @@
 		'Mechanical (MECH)',
 		'Electrical (ELEC)',
 		'Admin, Finance & Sponsor (BSAC)',
-		'Systems Innovation Group (SYS)'
+		'Systems Innovation Group (SYS)',
+		'Drivers'
 	];
 
 	// Variable to hold the selected department
 	let selectedDepartment = 'All';
+
+	// WBS numbering helper function
+	function getWBSNumber(deptIndex, subDeptIndex = null) {
+		const deptNum = deptIndex + 1;
+		if (subDeptIndex !== null && subDeptIndex !== undefined) {
+			return `${deptNum}.${subDeptIndex + 1}`;
+		}
+		return `${deptNum}`;
+	}
 </script>
 
 <svelte:head>
@@ -291,6 +352,24 @@
 		<div class="bg-baby_powder p-2 text-blackie">
 			<h1 class="text-center text-4xl font-bold">Our Team Structure - 2025/2026</h1>
 			<!-- <p class="font-sans">In a winter vacation.</p> -->
+		</div>
+
+		<!-- WBS Overview -->
+		<div class="mb-8 rounded-lg border-2 border-amber_SAE_ECE bg-white p-6 shadow-md">
+			<h2 class="mb-4 text-xl font-bold text-blackie">Work Breakdown Structure (WBS)</h2>
+			<div class="space-y-2 text-sm">
+				<p class="font-semibold text-gray-700">
+					<span class="mr-2 inline-flex items-center justify-center rounded-md bg-amber_SAE_ECE px-2 py-1 text-xs font-bold text-white">1</span>
+					Main Departments (Level 1)
+				</p>
+				<p class="ml-6 font-semibold text-gray-600">
+					<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-xs font-bold text-white">1.1</span>
+					Sub-Departments (Level 2)
+				</p>
+				<p class="mt-3 text-xs text-gray-500">
+					The numbered badges indicate the hierarchical structure of our organization.
+				</p>
+			</div>
 		</div>
 
 		<!-- Department Sections -->
@@ -310,15 +389,56 @@
 				</button>
 			{/each}
 		</div>
-		{#each departments as department}
+		{#each departments as department, deptIndex}
 			{#if selectedDepartment === 'All' || department.name === selectedDepartment}
 				<div class="mb-12">
-					<h2 class="mb-6 text-center text-2xl font-bold text-amber_SAE_ECE">{department.name}</h2>
+					<h2 class="mb-6 text-center text-2xl font-bold text-amber_SAE_ECE">
+						<span class="mr-3 inline-flex items-center justify-center rounded-md bg-amber_SAE_ECE px-3 py-1 text-lg font-bold text-white">
+							{getWBSNumber(deptIndex)}
+						</span>
+						{department.name}
+					</h2>
 
 					{#if department.subDepartments}
-						{#each department.subDepartments as subDept}
+						<!-- Show department-level members if they exist (only when there are sub-departments) -->
+						{#if department.members && department.members.length > 0}
 							<div class="mb-6">
-								<h3 class="mb-4 text-xl font-semibold text-coqueilcot">{subDept.name}</h3>
+								<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+									{#each department.members as member}
+										<div
+											class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
+										>
+											<img
+												src={member.avatar}
+												alt={member.name}
+												class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
+											/>
+											<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
+											<br />
+											<p class="text-sm">{member.role}</p>
+											{#if member.year}
+												<p class="text-sm font-semibold">
+													{member.year}
+												</p>
+											{/if}
+											{#if member.department}
+												<p class="text-sm font-bold">
+													{member.department}
+												</p>
+											{/if}
+										</div>
+									{/each}
+								</div>
+							</div>
+						{/if}
+						{#each department.subDepartments as subDept, subDeptIndex}
+							<div class="mb-6">
+								<h3 class="mb-4 text-xl font-semibold text-coqueilcot">
+									<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-base font-bold text-white">
+										{getWBSNumber(deptIndex, subDeptIndex)}
+									</span>
+									{subDept.name}
+								</h3>
 								<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 									{#each subDept.members as member}
 										<div

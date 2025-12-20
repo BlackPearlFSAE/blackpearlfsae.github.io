@@ -269,6 +269,8 @@
 			<!-- ::contentReference[oaicite:10]{index=10} -->
 		</div>
 	</div>
+		</div>
+	</div>
 </div>
 
 <!-- <div class="grid grid-cols-1 items-center gap-8 bg-white p-4 text-black md:grid-cols-2"></div> -->

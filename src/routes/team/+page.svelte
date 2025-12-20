@@ -56,7 +56,7 @@
 					role: 'Club Advisor',
 					year: '',
 					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						'./teams/people/advisor/AjDanai.jpg'
 				}
 			]
 		},
@@ -175,7 +175,7 @@
 				{
 					name: 'Chamint',
 					role: 'Finance Head',
-					year: 'Year 3, Tools and Materials Engineering',
+					year: 'Year 3, Modern Automotive and Aerospace Parts Engineering',
 					avatar:
 						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
 				},
@@ -189,18 +189,39 @@
 				{
 					name: 'Jubjang',
 					role: 'Sponsor Relations Specialist',
-					year: 'Year 2, Tools and Materials Engineering',
+					year: 'Year 2, Smart Manufacture and Advanced Tools Engineering',
 					avatar:
 						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-				}
+				},
+				{
+					name: 'Khaimook',
+     				role: 'Sponsor Relations',
+      				year: 'Year 1, Civil Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Aoy',
+     				role: 'Sponsor Relations',
+      				year: 'Year 2, Production Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
+				{
+					name: 'Aunda',
+     				role: 'Sponsor Relations',
+      				year: 'Year 1, Modern Automotive and Aerospace Parts Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				},
 			]
 		},
 		{
-			name: 'Systems Development Group (SYS)',
+			name: 'Systems Innovation Group (SYS)',
 			members: [
 				{
 					name: 'Yoo-il',
-					role: 'Head of Dept., Control Systems Specialist',
+					role: 'Head of Dept., Systems Integration Specialist',
 					year: 'Year 4, Computer Engineering',
 					avatar:
 						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
@@ -230,7 +251,7 @@
 		'Mechanical (MECH)',
 		'Electrical (ELEC)',
 		'Admin, Finance & Sponsor (BSAC)',
-		'Systems Development Group (SYS)'
+		'Systems Innovation Group (SYS)'
 	];
 
 	// Variable to hold the selected department
@@ -244,7 +265,7 @@
 <section class="bg-baby_powder px-6 py-12 text-blackie">
 	<div class="mx-auto max-w-7xl">
 		<div class="bg-baby_powder p-2 text-blackie">
-			<h1 class="text-center text-4xl font-bold">Our Team Strength - 2025/2026</h1>
+			<h1 class="text-center text-4xl font-bold">Our Team Structure - 2025/2026</h1>
 			<!-- <p class="font-sans">In a winter vacation.</p> -->
 		</div>
 

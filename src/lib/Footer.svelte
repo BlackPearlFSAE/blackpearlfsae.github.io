@@ -77,8 +77,13 @@
 						>
 					</li>
 					<li>
-						<a href="mailto:blackpearl@kmutt.ac.th" class="text-blue-700 hover:underline"
-							>blackpearl@kmutt.ac.th</a
+						<a href="mailto:fs.kmutt@gmail.com" class="text-blue-700 hover:underline"
+							>fs.kmutt@gmail.com</a
+						>
+					</li>
+					<li>
+						<a href="mailto:formula.student@mail.kmutt.ac.th" class="text-blue-700 hover:underline"
+							>formula.student@mail.kmutt.ac.th</a
 						>
 					</li>
 					<li class="font-normal">

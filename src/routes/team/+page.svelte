@@ -60,6 +60,15 @@
 		},
 		{
 			name: 'Mechanical (MECH)',
+			members: [
+				{
+					name: 'Print',
+					role: 'Head of Mechanical Department',
+					year: 'Year 2, Mechanical Engineering',
+					avatar:
+						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+				}
+			],
 			subDepartments: [
 				{
 					name: 'Powertrain',
@@ -107,6 +116,12 @@
 							year: 'Year 1, Master Degree',
 							avatar:
 								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						},
+						{
+							name: 'Prin',
+							role: 'Brake Specialist',
+							year: 'Year 2, Mechanical Engineering',
+							avatar: './teams/people/66ME_Prin.jpg'
 						}
 					]
 				},
@@ -132,12 +147,6 @@
 							year: 'Year 2, Mechanical Engineering',
 							avatar:
 								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
-						},
-						{
-							name: 'Print',
-							role: 'Brake Specialist',
-							year: 'Year 2, Mechanical Engineering',
-							avatar: './teams/people/66ME_Prin.jpg'
 						}
 					]
 				}
@@ -238,6 +247,18 @@
 								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
 						}
 					]
+				},
+				{
+					name: 'PR',
+					members: [
+						{
+							name: 'Porsche',
+							role: 'Head of PR',
+							year: 'Year 2, Tools and Materials Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
 				}
 			]
 		},
@@ -333,6 +354,9 @@
 	// Variable to hold the selected department
 	let selectedDepartment = 'All';
 
+	// WBS overview collapse state
+	let wbsExpanded = $state(false);
+
 	// WBS numbering helper function
 	function getWBSNumber(deptIndex, subDeptIndex = null) {
 		const deptNum = deptIndex + 1;
@@ -355,21 +379,40 @@
 		</div>
 
 		<!-- WBS Overview -->
-		<div class="mb-8 rounded-lg border-2 border-amber_SAE_ECE bg-white p-6 shadow-md">
-			<h2 class="mb-4 text-xl font-bold text-blackie">Work Breakdown Structure (WBS)</h2>
-			<div class="space-y-2 text-sm">
-				<p class="font-semibold text-gray-700">
-					<span class="mr-2 inline-flex items-center justify-center rounded-md bg-amber_SAE_ECE px-2 py-1 text-xs font-bold text-white">1</span>
-					Main Departments (Level 1)
-				</p>
-				<p class="ml-6 font-semibold text-gray-600">
-					<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-xs font-bold text-white">1.1</span>
-					Sub-Departments (Level 2)
-				</p>
-				<p class="mt-3 text-xs text-gray-500">
-					The numbered badges indicate the hierarchical structure of our organization.
-				</p>
-			</div>
+		<div class="mb-8 rounded-lg border-2 border-amber_SAE_ECE bg-white shadow-md">
+			<button
+				on:click={() => (wbsExpanded = !wbsExpanded)}
+				class="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-gray-50"
+			>
+				<h2 class="text-xl font-bold text-blackie">Work Breakdown Structure (WBS)</h2>
+				<svg
+					class="h-5 w-5 text-gray-600 transition-transform duration-200 {wbsExpanded
+						? 'rotate-180'
+						: ''}"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+				</svg>
+			</button>
+			{#if wbsExpanded}
+				<div class="border-t border-amber_SAE_ECE/30 p-6">
+					<div class="space-y-2 text-sm">
+						<p class="font-semibold text-gray-700">
+							<span class="mr-2 inline-flex items-center justify-center rounded-md bg-amber_SAE_ECE px-2 py-1 text-xs font-bold text-white">1</span>
+							Main Departments (Level 1)
+						</p>
+						<p class="ml-6 font-semibold text-gray-600">
+							<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-xs font-bold text-white">1.1</span>
+							Sub-Departments (Level 2)
+						</p>
+						<p class="mt-3 text-xs text-gray-500">
+							The numbered badges indicate the hierarchical structure of our organization.
+						</p>
+					</div>
+				</div>
+			{/if}
 		</div>
 
 		<!-- Department Sections -->
@@ -400,100 +443,103 @@
 					</h2>
 
 					{#if department.subDepartments}
-						<!-- Show department-level members if they exist (only when there are sub-departments) -->
-						{#if department.members && department.members.length > 0}
-							<div class="mb-6">
-								<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-									{#each department.members as member}
-										<div
-											class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
-										>
-											<img
-												src={member.avatar}
-												alt={member.name}
-												class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
-											/>
-											<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-											<br />
-											<p class="text-sm">{member.role}</p>
-											{#if member.year}
-												<p class="text-sm font-semibold">
-													{member.year}
-												</p>
-											{/if}
-											{#if member.department}
-												<p class="text-sm font-bold">
-													{member.department}
-												</p>
-											{/if}
-										</div>
-									{/each}
+						<!-- Org Chart Structure with Visual Hierarchy -->
+						<div class="relative py-2 md:py-4">
+							<!-- Department Head Level -->
+							{#if department.members && department.members.length > 0}
+								<div class="mb-6 flex justify-center">
+									<div class="flex flex-wrap justify-center gap-4">
+										{#each department.members as member}
+											<div
+												class="flex w-[160px] flex-col items-center rounded-lg border border-amber_SAE_ECE/40 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-amber_SAE_ECE hover:bg-amber_SAE_ECE hover:text-white hover:shadow-lg"
+											>
+												<img
+													src={member.avatar}
+													alt={member.name}
+													class="h-[140px] w-[140px] rounded-lg border border-amber_SAE_ECE/40 object-cover transition duration-300"
+												/>
+												<h4 class="mt-2 text-base font-semibold">{member.name}</h4>
+												<p class="mt-1 text-sm">{member.role}</p>
+												{#if member.year}
+													<p class="mt-1 text-sm font-semibold">{member.year}</p>
+												{/if}
+												{#if member.department}
+													<p class="mt-1 text-sm font-bold">{member.department}</p>
+												{/if}
+											</div>
+										{/each}
+									</div>
 								</div>
-							</div>
-						{/if}
-						{#each department.subDepartments as subDept, subDeptIndex}
-							<div class="mb-6">
-								<h3 class="mb-4 text-xl font-semibold text-coqueilcot">
-									<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-base font-bold text-white">
-										{getWBSNumber(deptIndex, subDeptIndex)}
-									</span>
-									{subDept.name}
-								</h3>
-								<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-									{#each subDept.members as member}
-										<div
-											class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
-										>
-											<img
-												src={member.avatar}
-												alt={member.name}
-												class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
-											/>
-											<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-											<br />
-											<p class="text-sm">{member.role}</p>
-											{#if member.year}
-												<p class="text-sm font-semibold">
-													{member.year}
-													<!-- CPE #65 -->
-												</p>
-											{/if}
-											{#if member.department}
-												<p class="text-sm font-bold">
-													{member.department}
-													<!-- CPE #65 -->
-												</p>
-											{/if}
-										</div>
-									{/each}
+								<!-- Connecting Line from Head to Sub-departments -->
+								<div class="mb-4 flex justify-center">
+									<div class="h-6 w-0.5 bg-amber_SAE_ECE"></div>
 								</div>
+							{/if}
+							
+							<!-- Sub-Departments Level -->
+							<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+								{#each department.subDepartments as subDept, subDeptIndex}
+									<div class="relative rounded-xl border border-gray-200 bg-gradient-to-b from-transparent to-[rgba(255,63,0,0.05)] p-4 shadow-sm">
+										<!-- Sub-Department Header Box -->
+										<div class="mb-3 rounded-lg border-2 border-coqueilcot bg-coqueilcot px-3 py-2 text-center">
+											<h3 class="text-lg font-bold text-white">
+												<span class="mr-2 inline-flex items-center justify-center rounded-md bg-white px-2 py-1 text-sm font-bold text-coqueilcot">
+													{getWBSNumber(deptIndex, subDeptIndex)}
+												</span>
+												{subDept.name}
+											</h3>
+										</div>
+										<!-- Connecting Line from Sub-Dept Header to Members -->
+										<div class="mb-3 flex justify-center">
+											<div class="h-4 w-0.5 bg-coqueilcot"></div>
+										</div>
+										<!-- Sub-Department Members -->
+										<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+											{#each subDept.members as member}
+												<div
+													class="flex flex-col items-center rounded-lg border border-coqueilcot/30 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
+												>
+													<img
+														src={member.avatar}
+														alt={member.name}
+														class="h-[140px] w-[140px] rounded-lg border border-coqueilcot/30 object-cover transition duration-300"
+													/>
+													<h4 class="mt-2 text-base font-semibold">{member.name}</h4>
+													<p class="mt-1 text-sm">{member.role}</p>
+													{#if member.year}
+														<p class="mt-1 text-sm font-semibold">{member.year}</p>
+													{/if}
+													{#if member.department}
+														<p class="mt-1 text-sm font-bold">{member.department}</p>
+													{/if}
+												</div>
+											{/each}
+										</div>
+									</div>
+								{/each}
 							</div>
-						{/each}
+						</div>
 					{:else}
-						<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+						<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
 							{#each department.members as member}
 								<div
-									class="flex flex-col items-center rounded-lg bg-white p-4 text-center text-blackie shadow-md transition duration-300 hover:bg-coqueilcot hover:text-white hover:shadow-lg hover:shadow-coqueilcot"
+									class="flex w-[160px] flex-col items-center rounded-lg border border-coqueilcot/30 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
 								>
 									<img
 										src={member.avatar}
 										alt={member.name}
-										class="h-[200px] w-[200px] rounded-lg border-2 border-amber_SAE_ECE object-cover transition duration-300 hover:scale-105 hover:shadow-lg"
+										class="h-[140px] w-[140px] rounded-lg border border-coqueilcot/30 object-cover transition duration-300"
 									/>
-									<h3 class="mt-4 text-lg font-semibold">{member.name}</h3>
-									<p class="text-sm">{member.role}</p>
-									<!-- <br /> -->
+									<h4 class="mt-2 text-base font-semibold">{member.name}</h4>
+									<p class="mt-1 text-sm">{member.role}</p>
 									{#if member.year}
-										<p class="text-sm font-semibold">
+										<p class="mt-1 text-sm font-semibold">
 											{member.year}
-											<!-- CPE #65 -->
 										</p>
 									{/if}
-									<br />
 									{#if member.department}
-										<p class="text-sm font-bold">
+										<p class="mt-1 text-sm font-bold">
 											{member.department}
-											<!-- CPE #65 -->
 										</p>
 									{/if}
 								</div>
@@ -507,3 +553,4 @@
 </section>
 
 <p class="p-2 font-extrabold italic text-gray-600">HR section is coming soon...</p>
+

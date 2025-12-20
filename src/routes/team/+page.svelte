@@ -371,22 +371,22 @@
 	<title>{pageTitle}</title>
 </svelte:head>
 
-<section class="bg-baby_powder px-6 py-12 text-blackie">
+<section class="bg-baby_powder dark:bg-gray-900 px-6 py-12 text-blackie dark:text-gray-100 transition-colors duration-200">
 	<div class="mx-auto max-w-7xl">
-		<div class="bg-baby_powder p-2 text-blackie">
+		<div class="bg-baby_powder dark:bg-gray-900 p-2 text-blackie dark:text-gray-100">
 			<h1 class="text-center text-4xl font-bold">Our Team Structure - 2025/2026</h1>
 			<!-- <p class="font-sans">In a winter vacation.</p> -->
 		</div>
 
 		<!-- WBS Overview -->
-		<div class="mb-8 rounded-lg border-2 border-amber_SAE_ECE bg-white shadow-md">
+		<div class="mb-8 rounded-lg border-2 border-amber_SAE_ECE bg-white dark:bg-gray-800 shadow-md transition-colors duration-200">
 			<button
 				on:click={() => (wbsExpanded = !wbsExpanded)}
-				class="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-gray-50"
+				class="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
 			>
-				<h2 class="text-xl font-bold text-blackie">Work Breakdown Structure (WBS)</h2>
+				<h2 class="text-xl font-bold text-blackie dark:text-gray-100">Work Breakdown Structure (WBS)</h2>
 				<svg
-					class="h-5 w-5 text-gray-600 transition-transform duration-200 {wbsExpanded
+					class="h-5 w-5 text-gray-600 dark:text-gray-400 transition-transform duration-200 {wbsExpanded
 						? 'rotate-180'
 						: ''}"
 					fill="none"
@@ -399,15 +399,15 @@
 			{#if wbsExpanded}
 				<div class="border-t border-amber_SAE_ECE/30 p-6">
 					<div class="space-y-2 text-sm">
-						<p class="font-semibold text-gray-700">
+						<p class="font-semibold text-gray-700 dark:text-gray-300">
 							<span class="mr-2 inline-flex items-center justify-center rounded-md bg-amber_SAE_ECE px-2 py-1 text-xs font-bold text-white">1</span>
 							Main Departments (Level 1)
 						</p>
-						<p class="ml-6 font-semibold text-gray-600">
+						<p class="ml-6 font-semibold text-gray-600 dark:text-gray-400">
 							<span class="mr-2 inline-flex items-center justify-center rounded-md bg-coqueilcot px-2 py-1 text-xs font-bold text-white">1.1</span>
 							Sub-Departments (Level 2)
 						</p>
-						<p class="mt-3 text-xs text-gray-500">
+						<p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
 							The numbered badges indicate the hierarchical structure of our organization.
 						</p>
 					</div>
@@ -425,7 +425,7 @@
 					class={`rounded-md border px-4 py-2 text-sm font-medium transition-colors duration-300 ${
 						selectedDepartment === dept
 							? 'border-coqueilcot bg-coqueilcot text-white'
-							: 'border-gray-300 bg-white text-blackie hover:border-coqueilcot hover:bg-coqueilcot hover:text-white'
+							: 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-blackie dark:text-gray-100 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white'
 					}`}
 				>
 					{dept}
@@ -451,7 +451,7 @@
 									<div class="flex flex-wrap justify-center gap-4">
 										{#each department.members as member}
 											<div
-												class="flex w-[160px] flex-col items-center rounded-lg border border-amber_SAE_ECE/40 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-amber_SAE_ECE hover:bg-amber_SAE_ECE hover:text-white hover:shadow-lg"
+												class="flex w-[160px] flex-col items-center rounded-lg border border-amber_SAE_ECE/40 bg-white dark:bg-gray-800 p-3 text-center text-blackie dark:text-gray-100 shadow-md transition duration-300 hover:border-amber_SAE_ECE hover:bg-amber_SAE_ECE hover:text-white hover:shadow-lg"
 											>
 												<img
 													src={member.avatar}
@@ -479,7 +479,7 @@
 							<!-- Sub-Departments Level -->
 							<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 								{#each department.subDepartments as subDept, subDeptIndex}
-									<div class="relative rounded-xl border border-gray-200 bg-gradient-to-b from-transparent to-[rgba(255,63,0,0.05)] p-4 shadow-sm">
+									<div class="relative rounded-xl border border-gray-200 dark:border-gray-700 bg-gradient-to-b from-transparent to-[rgba(255,63,0,0.05)] dark:to-[rgba(255,63,0,0.1)] p-4 shadow-sm">
 										<!-- Sub-Department Header Box -->
 										<div class="mb-3 rounded-lg border-2 border-coqueilcot bg-coqueilcot px-3 py-2 text-center">
 											<h3 class="text-lg font-bold text-white">
@@ -497,7 +497,7 @@
 										<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
 											{#each subDept.members as member}
 												<div
-													class="flex flex-col items-center rounded-lg border border-coqueilcot/30 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
+													class="flex flex-col items-center rounded-lg border border-coqueilcot/30 bg-white dark:bg-gray-800 p-3 text-center text-blackie dark:text-gray-100 shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
 												>
 													<img
 														src={member.avatar}
@@ -523,7 +523,7 @@
 						<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
 							{#each department.members as member}
 								<div
-									class="flex w-[160px] flex-col items-center rounded-lg border border-coqueilcot/30 bg-white p-3 text-center text-blackie shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
+									class="flex w-[160px] flex-col items-center rounded-lg border border-coqueilcot/30 bg-white dark:bg-gray-800 p-3 text-center text-blackie dark:text-gray-100 shadow-md transition duration-300 hover:border-coqueilcot hover:bg-coqueilcot hover:text-white hover:shadow-lg"
 								>
 									<img
 										src={member.avatar}
@@ -552,5 +552,5 @@
 	</div>
 </section>
 
-<p class="p-2 font-extrabold italic text-gray-600">HR section is coming soon...</p>
+<p class="p-2 font-extrabold italic text-gray-600 dark:text-gray-400">HR section is coming soon...</p>
 

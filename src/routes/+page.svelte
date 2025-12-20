@@ -152,43 +152,43 @@
 	<title>{baseTitle}</title>
 </svelte:head>
 
-<div class="bg-white p-4 text-black">
+<div class="bg-white dark:bg-gray-900 p-4 text-black dark:text-gray-100 transition-colors duration-200">
 	<p class="font-sans text-5xl font-bold">Black Pearl Racing Team</p>
 	<p class="text-2xl">
 		<a
 			href="https://www.fsaeonline.com/"
 			target="_blank"
-			class="font-semibold text-coqueilcot hover:underline">Formula Student</a
+			class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">Formula Student</a
 		>
 		team of
 		<a
 			href="https://www.kmutt.ac.th/"
 			target="_blank"
-			class="font-semibold text-coqueilcot hover:underline">KMUTT</a
+			class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">KMUTT</a
 		>.
 	</p>
 </div>
 
 <!-- Grid Layout for Countdown and Carousel -->
-<div class="mx-auto grid grid-cols-1 items-center gap-8 bg-white p-4 text-black md:grid-cols-10">
+<div class="mx-auto grid grid-cols-1 items-center gap-8 bg-white dark:bg-gray-900 p-4 text-black dark:text-gray-100 transition-colors duration-200 md:grid-cols-10">
 	<!-- Timer: spans 3 columns on medium screens and above -->
 	<div class="md:col-span-3">
 		<!-- Timer content here -->
-		<div class="mx-auto max-w-lg rounded-lg bg-gray-100 p-6 shadow-md">
-			<h2 class="mb-2 text-3xl font-bold text-gray-800">laconic</h2>
-			<p class="mb-4 italic text-gray-600">/ləˈkɒnɪk/</p>
-			<p class="mb-2 text-sm font-semibold uppercase text-gray-500">adjective</p>
-			<p class="mb-4 text-gray-700">
+		<div class="mx-auto max-w-lg rounded-lg bg-gray-100 dark:bg-gray-800 p-6 shadow-md transition-colors duration-200">
+			<h2 class="mb-2 text-3xl font-bold text-gray-800 dark:text-gray-100">laconic</h2>
+			<p class="mb-4 italic text-gray-600 dark:text-gray-400">/ləˈkɒnɪk/</p>
+			<p class="mb-2 text-sm font-semibold uppercase text-gray-500 dark:text-gray-400">adjective</p>
+			<p class="mb-4 text-gray-700 dark:text-gray-300">
 				Using very few words; concise to the point of seeming mysterious or rude.
 			</p>
-			<p class="mb-4 text-gray-700">
+			<p class="mb-4 text-gray-700 dark:text-gray-300">
 				<span class="font-semibold">Etymology:</span> From Latin <em>Laconicus</em>, meaning 'of or
 				relating to Laconia', the region of ancient Greece that included Sparta. Spartans were known
 				for their terse speech.
 			</p>
-			<div class="border-l-4 border-gray-400 pl-4 italic text-gray-600">
+			<div class="border-l-4 border-gray-400 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400">
 				When Philip II of Macedon threatened Sparta with destruction, the Spartans replied with a
-				single word: “If.”
+				single word: "If."
 			</div>
 		</div>
 
@@ -250,14 +250,14 @@
 			<!-- Navigation Controls -->
 			<button
 				on:click={prevSlide}
-				class="absolute left-4 top-1/2 -translate-y-1/2 transform rounded-full bg-white bg-opacity-50 p-2 text-black hover:bg-opacity-75"
+				class="absolute left-4 top-1/2 -translate-y-1/2 transform rounded-full bg-white dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-70 p-2 text-black dark:text-gray-100 hover:bg-opacity-75 dark:hover:bg-opacity-90 transition-colors duration-200"
 				aria-label="Previous Slide"
 			>
 				&#8592;
 			</button>
 			<button
 				on:click={nextSlide}
-				class="absolute right-4 top-1/2 -translate-y-1/2 transform rounded-full bg-white bg-opacity-50 p-2 text-black hover:bg-opacity-75"
+				class="absolute right-4 top-1/2 -translate-y-1/2 transform rounded-full bg-white dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-70 p-2 text-black dark:text-gray-100 hover:bg-opacity-75 dark:hover:bg-opacity-90 transition-colors duration-200"
 				aria-label="Next Slide"
 			>
 				&#8594
@@ -272,8 +272,8 @@
 <div class="h-[2rem]"></div>
 <hr />
 <!-- Sponsors (homepage entry) -->
-<div class="p-2 px-4">
-	<div class="bg-baby_powder text-blackie">
+<div class="p-2 px-4 bg-white dark:bg-gray-900 transition-colors duration-200">
+	<div class="bg-baby_powder dark:bg-gray-800 text-blackie dark:text-gray-100 p-4 rounded-lg transition-colors duration-200">
 		<h1 class="text-4xl font-bold">Driving Innovation Together</h1>
 		<p>
 			We extend our heartfelt gratitude to the sponsors who power our journey. Their unwavering
@@ -289,10 +289,10 @@
 						href={sponsor.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center"
+						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center transition-transform duration-200 hover:scale-105"
 					>
 						<img src={sponsor.src} alt={sponsor.alt} class="h-48 w-48 object-contain" />
-						<span class="mt-2 text-center text-sm font-semibold text-gray-700">
+						<span class="mt-2 text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
 							{sponsor.caption}
 						</span>
 					</a>
@@ -303,10 +303,10 @@
 						href={sponsor.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center"
+						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center transition-transform duration-200 hover:scale-105"
 					>
 						<img src={sponsor.src} alt={sponsor.alt} class="h-48 w-48 object-contain" />
-						<span class="mt-2 text-center text-sm font-semibold text-gray-700">
+						<span class="mt-2 text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
 							{sponsor.caption}
 						</span>
 					</a>

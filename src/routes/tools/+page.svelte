@@ -10,7 +10,7 @@
 	<title>{pageTitle}</title>
 </svelte:head>
 
-<div class="bg-baby_powder p-2 text-blackie">
+<div class="bg-baby_powder dark:bg-gray-900 p-2 text-blackie dark:text-gray-100 transition-colors duration-200">
 	<h1 class="text-3xl font-bold">Our Internal Tools</h1>
 	<p class="font-sans">In a winter vacation too.</p>
 
@@ -31,7 +31,7 @@
 				href="https://www.jsae.or.jp/files_publish/page/827/no_29.pdf"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="font-bold text-blue-600 hover:underline"
+				class="font-bold text-blue-600 dark:text-blue-400 hover:underline"
 			>
 				140+ pages of rule book
 			</a>
@@ -41,7 +41,7 @@
 				href="https://www.fsaeonline.com/app/CompetitionResources.aspx"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="font-bold text-blue-600 hover:underline"
+				class="font-bold text-blue-600 dark:text-blue-400 hover:underline"
 			>
 				Competition resources
 			</a>

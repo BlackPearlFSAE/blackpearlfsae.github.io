@@ -3,7 +3,8 @@
 	// import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	// import { link } from '$app/navigation';
 	import Footer from '$lib/Footer.svelte';
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import { darkMode } from '$lib/stores/darkMode';
 	import '../app.css';
 	let { children } = $props();
 
@@ -28,6 +29,11 @@
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
 	}
+
+	// Initialize dark mode
+	onMount(() => {
+		darkMode.init();
+	});
 </script>
 
 <svelte:head>
@@ -36,12 +42,12 @@
 
 <!-- Fix: for fixed/sticky footer on the bottom -->
 <!-- https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom -->
-<div class="flex h-screen flex-col">
-	<nav class="hidden p-2 md:flex lg:flex xl:flex">
+<div class="flex h-screen flex-col bg-baby_powder dark:bg-gray-900 transition-colors duration-200">
+	<nav class="hidden p-2 md:flex lg:flex xl:flex dark:bg-gray-800">
 		<ul class="flex space-x-4">
 			{#each navItems as { href, label }}
 				<li>
-					<a {href} class="group relative text-black">
+					<a {href} class="group relative text-black dark:text-gray-100">
 						{label}
 						<span
 							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
@@ -52,14 +58,14 @@
 		</ul>
 	</nav>
 
-	<nav class="bg-white p-4 shadow-md md:hidden">
+	<nav class="bg-white dark:bg-gray-800 p-4 shadow-md md:hidden transition-colors duration-200">
 		<div class="flex items-center justify-between">
 			<!-- Logo or Brand Name -->
-			<a href="/" class="text-xl font-bold text-black">Black Pearl Racing</a>
+			<a href="/" class="text-xl font-bold text-black dark:text-gray-100">Black Pearl Racing</a>
 
 			<!-- Hamburger Button (Visible on Mobile) -->
 			<button
-				class="text-black focus:outline-none md:hidden"
+				class="text-black dark:text-gray-100 focus:outline-none md:hidden"
 				onclick={toggleMenu}
 				aria-label="Toggle nav menu"
 			>
@@ -83,7 +89,7 @@
 		>
 			{#each navItems as { href, label }}
 				<li>
-					<a {href} class="block px-0 py-2 text-black hover:text-blue-700">
+					<a {href} class="block px-0 py-2 text-black dark:text-gray-100 hover:text-blue-700 dark:hover:text-blue-400">
 						{label}
 						<span
 							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"

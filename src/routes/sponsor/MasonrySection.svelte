@@ -9,10 +9,10 @@
 	<div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3 lg:columns-4">
 		{#each sponsors as sponsor (sponsor.id)}
 			<div
-				class="break-inside-avoid overflow-hidden rounded-lg shadow transition-shadow duration-300 hover:shadow-lg"
+				class="break-inside-avoid overflow-hidden rounded-lg shadow transition-all duration-300 hover:scale-105 hover:shadow-lg"
 			>
 				<img src={sponsor.image} alt={sponsor.name} class="h-auto w-full object-cover" />
-				<div class="bg-white p-4 text-blackie">
+				<div class="bg-white dark:bg-gray-800 p-4 text-blackie dark:text-gray-100 transition-colors duration-200">
 					<p class="text-center font-semibold">{sponsor.name}</p>
 				</div>
 			</div>

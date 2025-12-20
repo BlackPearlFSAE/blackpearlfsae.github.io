@@ -40,16 +40,14 @@
 					role: 'Captain',
 					year: 'Year 3, Bachelor',
 					department: 'Civil Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/66CVE_Namo.jpg'
 				},
 				{
 					name: 'Tanny',
 					role: 'Vice Captain',
 					year: 'Year 3, Bachelor',
 					department: 'Electronics and Network Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/66ENE_Tannie.jpg'
 				},
 				{
 					name: 'Ajarn Danai',
@@ -91,8 +89,7 @@
 							name: 'Goody',
 							role: 'Specialist',
 							year: 'Year 2, Automotive Engineering',
-							avatar:
-								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+							avatar: './teams/people/67ME_Goody.jpg'
 						}
 					]
 				},
@@ -143,8 +140,7 @@
 							name: 'Print',
 							role: 'Brake Specialist',
 							year: 'Year 2, Mechanical Engineering',
-							avatar:
-								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+							avatar: './teams/people/66ME_Prin.jpg'
 						}
 					]
 				}
@@ -157,15 +153,13 @@
 					name: 'Tanny',
 					role: 'Head of Dept., High Voltage Specialist',
 					year: 'Year 3, Electronics and Network Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/66ENE_Tannie.jpg'
 				},
 				{
 					name: 'Jackie',
 					role: 'Low Voltage System Specialist',
 					year: 'Year 3, Computer Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/66CPE_Jackie.png'
 				}
 			]
 		},
@@ -176,8 +170,7 @@
 					name: 'Chamint',
 					role: 'Finance Head',
 					year: 'Year 3, Modern Automotive and Aerospace Parts Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/66TME_Chamint.jpg'
 				},
 				{
 					name: 'Nott',
@@ -236,8 +229,7 @@
 					name: 'Angy',
 					role: 'Specialist, Design Thinking',
 					year: 'Year 2, Electronics and Network Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/67ENE_Angy.jpg'
 				}
 			]
 		}

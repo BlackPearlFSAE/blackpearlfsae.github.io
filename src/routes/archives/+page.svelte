@@ -52,23 +52,25 @@
 <!-- YouTube videos -->
 
 <div class="bg-baby_powder dark:bg-gray-900 p-2 text-blackie dark:text-gray-100 transition-colors duration-200">
-	<h1 class="text-3xl font-bold">Archives collection</h1>
-	<p class="mb-4 font-sans">Explore our team's journey through the years.</p>
+	<div class="container mx-auto px-4">
+		<h1 class="text-3xl font-bold">Archives collection</h1>
+		<p class="mb-4 font-sans">Explore our team's journey through the years.</p>
 
-	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-		{#each videos as video}
-			<div class="rounded-lg bg-white dark:bg-gray-800 p-0 shadow transition-all duration-300 hover:scale-105 hover:shadow-lg">
-				<iframe
-					class="aspect-video w-full rounded"
-					src={video.src}
-					title={video.caption}
-					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerpolicy="strict-origin-when-cross-origin"
-					allowfullscreen
-				></iframe>
-				<p class="mt-2 text-sm italic text-gray-600 dark:text-gray-400">{video.caption}</p>
-			</div>
-		{/each}
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+			{#each videos as video}
+				<div class="rounded-lg bg-white dark:bg-gray-800 p-0 shadow transition-all duration-300 hover:scale-105 hover:shadow-lg">
+					<iframe
+						class="aspect-video w-full rounded"
+						src={video.src}
+						title={video.caption}
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					></iframe>
+					<p class="mt-2 text-sm italic text-gray-600 dark:text-gray-400">{video.caption}</p>
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>

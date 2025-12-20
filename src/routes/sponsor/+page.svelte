@@ -37,8 +37,10 @@
 </div> -->
 
 <div class="bg-baby_powder dark:bg-gray-900 p-6 text-blackie dark:text-gray-100 transition-colors duration-200">
-	<h1 class="mb-8 text-center text-3xl font-bold">Our Sponsors</h1>
-	<MasonrySection title="Platinum Sponsors" sponsors={platinumSponsors} />
-	<MasonrySection title="Gold Sponsors" sponsors={goldSponsors} />
-	<MasonrySection title="Silver Sponsors" sponsors={silverSponsors} />
+	<div class="container mx-auto px-4">
+		<h1 class="mb-8 text-center text-3xl font-bold">Our Sponsors</h1>
+		<MasonrySection title="Platinum Sponsors" sponsors={platinumSponsors} />
+		<MasonrySection title="Gold Sponsors" sponsors={goldSponsors} />
+		<MasonrySection title="Silver Sponsors" sponsors={silverSponsors} />
+	</div>
 </div>

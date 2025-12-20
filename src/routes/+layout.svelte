@@ -44,18 +44,20 @@
 <!-- https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom -->
 <div class="flex h-screen flex-col bg-baby_powder dark:bg-gray-900 transition-colors duration-200">
 	<nav class="hidden p-2 md:flex lg:flex xl:flex dark:bg-gray-800">
-		<ul class="flex space-x-4">
-			{#each navItems as { href, label }}
-				<li>
-					<a {href} class="group relative text-black dark:text-gray-100">
-						{label}
-						<span
-							class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
-						></span>
-					</a>
-				</li>
-			{/each}
-		</ul>
+		<div class="container mx-auto px-4">
+			<ul class="flex space-x-4">
+				{#each navItems as { href, label }}
+					<li>
+						<a {href} class="group relative text-black dark:text-gray-100">
+							{label}
+							<span
+								class="absolute bottom-0 left-0 h-0.5 w-0 bg-amber_SAE_ECE transition-all group-hover:w-full"
+							></span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
 	</nav>
 
 	<nav class="bg-white dark:bg-gray-800 p-4 shadow-md md:hidden transition-colors duration-200">

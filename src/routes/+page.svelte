@@ -153,24 +153,28 @@
 </svelte:head>
 
 <div class="bg-white dark:bg-gray-900 p-4 text-black dark:text-gray-100 transition-colors duration-200">
-	<p class="font-sans text-5xl font-bold">Black Pearl Racing Team</p>
-	<p class="text-2xl">
-		<a
-			href="https://www.fsaeonline.com/"
-			target="_blank"
-			class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">Formula Student</a
-		>
-		team of
-		<a
-			href="https://www.kmutt.ac.th/"
-			target="_blank"
-			class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">KMUTT</a
-		>.
-	</p>
+	<div class="container mx-auto px-4">
+		<p class="font-sans text-5xl font-bold">Black Pearl Racing Team</p>
+		<p class="text-2xl">
+			<a
+				href="https://www.fsaeonline.com/"
+				target="_blank"
+				class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">Formula Student</a
+			>
+			team of
+			<a
+				href="https://www.kmutt.ac.th/"
+				target="_blank"
+				class="font-semibold text-coqueilcot dark:text-amber_SAE_ECE hover:underline">KMUTT</a
+			>.
+		</p>
+	</div>
 </div>
 
 <!-- Grid Layout for Countdown and Carousel -->
-<div class="mx-auto grid grid-cols-1 items-center gap-8 bg-white dark:bg-gray-900 p-4 text-black dark:text-gray-100 transition-colors duration-200 md:grid-cols-10">
+<div class="bg-white dark:bg-gray-900 p-4 text-black dark:text-gray-100 transition-colors duration-200">
+	<div class="container mx-auto px-4">
+		<div class="grid grid-cols-1 items-center gap-8 md:grid-cols-10">
 	<!-- Timer: spans 3 columns on medium screens and above -->
 	<div class="md:col-span-3">
 		<!-- Timer content here -->
@@ -273,15 +277,16 @@
 <hr />
 <!-- Sponsors (homepage entry) -->
 <div class="p-2 px-4 bg-white dark:bg-gray-900 transition-colors duration-200">
-	<div class="bg-baby_powder dark:bg-gray-800 text-blackie dark:text-gray-100 p-4 rounded-lg transition-colors duration-200">
-		<h1 class="text-4xl font-bold">Driving Innovation Together</h1>
-		<p>
-			We extend our heartfelt gratitude to the sponsors who power our journey. Their unwavering
-			support fuels our passion and drives us forward.​
-		</p>
-		<p>Explore our sponsors below and discover the remarkable work they do.</p>
-	</div>
-	<div class="overflow-x-auto whitespace-nowrap px-2 py-4">
+	<div class="container mx-auto px-4">
+		<div class="bg-baby_powder dark:bg-gray-800 text-blackie dark:text-gray-100 p-4 rounded-lg transition-colors duration-200">
+			<h1 class="text-4xl font-bold">Driving Innovation Together</h1>
+			<p>
+				We extend our heartfelt gratitude to the sponsors who power our journey. Their unwavering
+				support fuels our passion and drives us forward.​
+			</p>
+			<p>Explore our sponsors below and discover the remarkable work they do.</p>
+		</div>
+		<div class="overflow-x-auto whitespace-nowrap px-2 py-4">
 		<div class="overflow-hidden whitespace-nowrap">
 			<div class="animate-marquee flex">
 				{#each sponsors as sponsor}
@@ -312,6 +317,7 @@
 					</a>
 				{/each}
 			</div>
+		</div>
 		</div>
 	</div>
 </div>

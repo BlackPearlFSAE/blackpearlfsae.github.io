@@ -68,8 +68,7 @@
 							name: 'Dawin',
 							role: 'Specialist, Head of Dept.',
 							year: 'Year 2, Mechanical Engineering',
-							avatar:
-								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+							avatar: './teams/people/67ME_Dave.jpg'
 						},
 						{
 							name: 'Pan',
@@ -100,8 +99,7 @@
 							name: 'Namo',
 							role: 'Chassis (Steel Space Frame)',
 							year: 'Year 3, Civil Engineering',
-							avatar:
-								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+							avatar: './teams/people/66CVE_Namo.jpg'
 						},
 						{
 							name: 'Skoog',
@@ -119,8 +117,7 @@
 							name: 'Folk',
 							role: 'Head of Department',
 							year: 'Year 4, Automotive Engineering',
-							avatar:
-								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+							avatar: './teams/people/65ME_Volk.jpg'
 						},
 						{
 							name: 'Dutch',
@@ -148,18 +145,35 @@
 		},
 		{
 			name: 'Electrical (ELEC)',
-			members: [
+			subDepartments: [
 				{
-					name: 'Tanny',
-					role: 'Head of Dept., High Voltage Specialist',
-					year: 'Year 3, Electronics and Network Engineering',
-					avatar: './teams/people/66ENE_Tannie.jpg'
+					name: 'HV System',
+					members: [
+						{
+							name: 'Tanny',
+							role: 'Head of Dept.',
+							year: 'Year 3, Electronics and Network Engineering',
+							avatar: './teams/people/66ENE_Tannie.jpg'
+						},
+						{
+							name: 'Petch',
+							role: 'Technician',
+							year: 'Year 2, Electronics and Network Engineering',
+							avatar:
+								'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+						}
+					]
 				},
 				{
-					name: 'Jackie',
-					role: 'Low Voltage System Specialist',
-					year: 'Year 3, Computer Engineering',
-					avatar: './teams/people/66CPE_Jackie.png'
+					name: 'LV System',
+					members: [
+						{
+							name: 'Jackie',
+							role: 'Head of LV Systems',
+							year: 'Year 3, Computer Engineering',
+							avatar: './teams/people/66CPE_Jackie.png'
+						}
+					]
 				}
 			]
 		},
@@ -182,8 +196,7 @@
 					name: 'Jubjang',
 					role: 'Sponsor Relations Specialist',
 					year: 'Year 2, Smart Manufacture and Advanced Tools Engineering',
-					avatar:
-						'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'
+					avatar: './teams/people/67TME_jubjang.jpg'
 				},
 				{
 					name: 'Khaimook',

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	let pageTitle = 'Merch Store';
 	const product = {
 		name: 'Black Pearl Racing T-Shirt',
@@ -7,22 +9,12 @@
 		description:
 			'Premium cotton t-shirt featuring the Black Pearl Racing logo. Available in all sizes.',
 		options: [
-			{
-				name: 'Size',
-				choices: ['S', 'M', 'L', 'XL']
-			},
-			{
-				name: 'Color',
-				choices: ['Black', 'White', 'Navy']
-			},
-			{
-				name: 'Quantity',
-				choices: [1, 2, 3, 4, 5]
-			}
+			{ name: 'Size', choices: ['S', 'M', 'L', 'XL'] },
+			{ name: 'Color', choices: ['Black', 'White', 'Navy'] },
+			{ name: 'Quantity', choices: [1, 2, 3, 4, 5] }
 		]
 	};
 
-	// Initialize selected options
 	let selectedOptions: Record<string, string | number> = {};
 	product.options.forEach((option) => {
 		selectedOptions[option.name] = option.choices[0];
@@ -32,28 +24,59 @@
 	let isSubmitting = false;
 	let submitStatus = ''; // 'success' | 'error' | ''
 
-	// Replace with your deployed Apps Script Web App URL
-	const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+	// Customer info
+	let customerName = '';
+	let contactType: 'phone' | 'instagram' | 'line' = 'phone';
+	let contactValue = '';
+	let pickupLocation = 'Loading...';
+
+	const APPS_SCRIPT_URL =
+		'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+
+	onMount(async () => {
+		try {
+			const res = await fetch(APPS_SCRIPT_URL);
+			const data = await res.json();
+			pickupLocation = data.pickupLocation || 'TBA';
+		} catch {
+			pickupLocation = 'TBA – check our social media for updates';
+		}
+	});
+
+	const contactPlaceholder: Record<string, string> = {
+		phone: '08X-XXX-XXXX',
+		instagram: '@username',
+		line: 'LINE ID'
+	};
+
+	$: canSubmit = customerName.trim() !== '' && contactValue.trim() !== '';
 
 	async function submitOrder() {
+		if (!canSubmit) return;
 		isSubmitting = true;
 		submitStatus = '';
 		const payload = {
 			timestamp: new Date().toISOString(),
+			name: customerName.trim(),
+			contactType,
+			contact: contactValue.trim(),
 			product: product.name,
 			size: selectedOptions['Size'],
 			color: selectedOptions['Color'],
 			quantity: selectedOptions['Quantity'],
-			total: product.price * Number(selectedOptions['Quantity'])
+			total: product.price * Number(selectedOptions['Quantity']),
+			pickupLocation
 		};
 		try {
 			await fetch(APPS_SCRIPT_URL, {
 				method: 'POST',
-				mode: 'no-cors', // Apps Script doesn't return CORS headers
+				mode: 'no-cors',
 				body: JSON.stringify(payload)
 			});
 			submitStatus = 'success';
-		} catch (e) {
+			customerName = '';
+			contactValue = '';
+		} catch {
 			submitStatus = 'error';
 		} finally {
 			isSubmitting = false;
@@ -80,7 +103,9 @@
 			</div>
 			<div>
 				<h2 class="mb-2 text-2xl font-semibold">{product.name}</h2>
-				<p class="mb-4 text-xl font-semibold text-coqueilcot dark:text-amber_SAE_ECE"><span class="text-black dark:text-gray-100">THB &nbsp;</span>{product.price}</p>
+				<p class="mb-4 text-xl font-semibold text-coqueilcot dark:text-amber_SAE_ECE">
+					<span class="text-black dark:text-gray-100">THB &nbsp;</span>{product.price}
+				</p>
 				<p class="mb-6 text-gray-700 dark:text-gray-300">{product.description}</p>
 				{#each product.options as option}
 					<div class="mb-4">
@@ -131,26 +156,74 @@
 {#if showModal}
 	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
 		<div class="w-96 rounded bg-white dark:bg-gray-800 p-6 shadow-lg text-blackie dark:text-gray-100 transition-colors duration-200">
-			<h2 class="mb-4 text-xl font-bold">Order Summary</h2>
-			<p><strong>Product:</strong> {product.name}</p>
-			{#each Object.entries(selectedOptions) as [key, value]}
-				<p><strong>{key}:</strong> {value}</p>
-			{/each}
-			<p><strong>Total:</strong> {product.price * Number(selectedOptions['Quantity'])} THB</p>
-			<div class="mt-4 flex justify-end">
+			<h2 class="mb-4 text-xl font-bold">Checkout</h2>
+
+			<!-- Customer info -->
+			<div class="mb-4">
+				<label class="mb-1 block font-semibold" for="customerName">Full Name <span class="text-coqueilcot">*</span></label>
+				<input
+					id="customerName"
+					type="text"
+					bind:value={customerName}
+					placeholder="Your name"
+					class="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-blackie dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-coqueilcot"
+				/>
+			</div>
+
+			<div class="mb-4">
+				<span class="mb-1 block font-semibold">Contact <span class="text-coqueilcot">*</span></span>
+				<div class="mb-2 flex gap-2">
+					{#each (['phone', 'instagram', 'line'] as const) as type}
+						<button
+							type="button"
+							on:click={() => { contactType = type; contactValue = ''; }}
+							class={`rounded-full border px-3 py-1 text-sm transition-colors duration-200 ${
+								contactType === type
+									? 'border-coqueilcot bg-coqueilcot text-white'
+									: 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 hover:border-coqueilcot'
+							}`}
+						>
+							{type === 'phone' ? 'Phone' : type === 'instagram' ? 'Instagram' : 'LINE'}
+						</button>
+					{/each}
+				</div>
+				<input
+					type="text"
+					bind:value={contactValue}
+					placeholder={contactPlaceholder[contactType]}
+					class="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-blackie dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-coqueilcot"
+				/>
+			</div>
+
+			<!-- Pickup location -->
+			<div class="mb-4 rounded bg-gray-100 dark:bg-gray-700 px-4 py-3 text-sm">
+				<span class="font-semibold">Pickup location:</span>
+				<span class="ml-1">{pickupLocation}</span>
+			</div>
+
+			<!-- Order summary -->
+			<div class="mb-4 border-t border-gray-200 dark:border-gray-600 pt-4 text-sm">
+				<p><strong>Product:</strong> {product.name}</p>
+				{#each Object.entries(selectedOptions) as [key, value]}
+					<p><strong>{key}:</strong> {value}</p>
+				{/each}
+				<p class="mt-1 font-semibold"><strong>Total:</strong> {product.price * Number(selectedOptions['Quantity'])} THB</p>
+			</div>
+
+			<div class="flex justify-end gap-2">
 				<button
 					on:click={() => (showModal = false)}
 					disabled={isSubmitting}
-					class="mr-2 rounded bg-gray-300 dark:bg-gray-600 px-4 py-2 font-bold text-black dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-500 disabled:opacity-50"
+					class="rounded bg-gray-300 dark:bg-gray-600 px-4 py-2 font-bold text-black dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-500 disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					on:click={submitOrder}
-					disabled={isSubmitting}
-					class="rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE disabled:opacity-50"
+					disabled={isSubmitting || !canSubmit}
+					class="rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE disabled:opacity-50 disabled:cursor-not-allowed"
 				>
-					{isSubmitting ? 'Submitting…' : 'Confirm'}
+					{isSubmitting ? 'Submitting…' : 'Confirm Order'}
 				</button>
 			</div>
 		</div>

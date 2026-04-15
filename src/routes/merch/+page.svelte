@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let pageTitle = 'Merch Store';
 	const product = {
 		name: 'Black Pearl Racing T-Shirt',
@@ -23,12 +23,43 @@
 	};
 
 	// Initialize selected options
-	let selectedOptions = {};
+	let selectedOptions: Record<string, string | number> = {};
 	product.options.forEach((option) => {
 		selectedOptions[option.name] = option.choices[0];
 	});
 
 	let showModal = false;
+	let isSubmitting = false;
+	let submitStatus = ''; // 'success' | 'error' | ''
+
+	// Replace with your deployed Apps Script Web App URL
+	const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+
+	async function submitOrder() {
+		isSubmitting = true;
+		submitStatus = '';
+		const payload = {
+			timestamp: new Date().toISOString(),
+			product: product.name,
+			size: selectedOptions['Size'],
+			color: selectedOptions['Color'],
+			quantity: selectedOptions['Quantity'],
+			total: product.price * Number(selectedOptions['Quantity'])
+		};
+		try {
+			await fetch(APPS_SCRIPT_URL, {
+				method: 'POST',
+				mode: 'no-cors', // Apps Script doesn't return CORS headers
+				body: JSON.stringify(payload)
+			});
+			submitStatus = 'success';
+		} catch (e) {
+			submitStatus = 'error';
+		} finally {
+			isSubmitting = false;
+			showModal = false;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -87,6 +118,16 @@
 	</div>
 </section>
 
+{#if submitStatus === 'success'}
+	<div class="fixed bottom-6 left-1/2 -translate-x-1/2 rounded bg-green-600 px-6 py-3 text-white shadow-lg">
+		Order placed! We'll be in touch.
+	</div>
+{:else if submitStatus === 'error'}
+	<div class="fixed bottom-6 left-1/2 -translate-x-1/2 rounded bg-red-600 px-6 py-3 text-white shadow-lg">
+		Something went wrong. Please try again.
+	</div>
+{/if}
+
 {#if showModal}
 	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
 		<div class="w-96 rounded bg-white dark:bg-gray-800 p-6 shadow-lg text-blackie dark:text-gray-100 transition-colors duration-200">
@@ -95,22 +136,21 @@
 			{#each Object.entries(selectedOptions) as [key, value]}
 				<p><strong>{key}:</strong> {value}</p>
 			{/each}
-			<p><strong>Total:</strong> {product.price * selectedOptions['Quantity']} THB</p>
+			<p><strong>Total:</strong> {product.price * Number(selectedOptions['Quantity'])} THB</p>
 			<div class="mt-4 flex justify-end">
 				<button
 					on:click={() => (showModal = false)}
-					class="mr-2 rounded bg-gray-300 dark:bg-gray-600 px-4 py-2 font-bold text-black dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-500"
+					disabled={isSubmitting}
+					class="mr-2 rounded bg-gray-300 dark:bg-gray-600 px-4 py-2 font-bold text-black dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-500 disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
-					on:click={() => {
-						// Implement checkout logic here
-						showModal = false;
-					}}
-					class="rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE"
+					on:click={submitOrder}
+					disabled={isSubmitting}
+					class="rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE disabled:opacity-50"
 				>
-					Confirm
+					{isSubmitting ? 'Submitting…' : 'Confirm'}
 				</button>
 			</div>
 		</div>

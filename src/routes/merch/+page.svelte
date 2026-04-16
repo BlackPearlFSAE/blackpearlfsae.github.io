@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import QRCode from 'qrcode';
 
 	let pageTitle = 'Merch Store';
 	const product = {
@@ -30,6 +31,11 @@
 	let contactValue = '';
 	let pickupLocation = 'Loading...';
 
+	// QR receipt
+	let showReceipt = false;
+	let qrDataUrl = '';
+	let receiptOrder: Record<string, unknown> = {};
+
 	const APPS_SCRIPT_URL =
 		'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
 
@@ -55,7 +61,9 @@
 		if (!canSubmit) return;
 		isSubmitting = true;
 		submitStatus = '';
+		const orderId = `BPR-${Date.now()}`;
 		const payload = {
+			orderId,
 			timestamp: new Date().toISOString(),
 			name: customerName.trim(),
 			contactType,
@@ -73,7 +81,18 @@
 				mode: 'no-cors',
 				body: JSON.stringify(payload)
 			});
-			submitStatus = 'success';
+			// Generate QR code from order summary text
+			const qrText = [
+				`Order ID: ${orderId}`,
+				`Name: ${payload.name}`,
+				`Product: ${payload.product}`,
+				`Size: ${payload.size}  Color: ${payload.color}  Qty: ${payload.quantity}`,
+				`Total: ${payload.total} THB`,
+				`Pickup: ${payload.pickupLocation}`
+			].join('\n');
+			qrDataUrl = await QRCode.toDataURL(qrText, { width: 256, margin: 2 });
+			receiptOrder = payload;
+			showReceipt = true;
 			customerName = '';
 			contactValue = '';
 		} catch {
@@ -143,13 +162,38 @@
 	</div>
 </section>
 
-{#if submitStatus === 'success'}
-	<div class="fixed bottom-6 left-1/2 -translate-x-1/2 rounded bg-green-600 px-6 py-3 text-white shadow-lg">
-		Order placed! We'll be in touch.
-	</div>
-{:else if submitStatus === 'error'}
+{#if submitStatus === 'error'}
 	<div class="fixed bottom-6 left-1/2 -translate-x-1/2 rounded bg-red-600 px-6 py-3 text-white shadow-lg">
 		Something went wrong. Please try again.
+	</div>
+{/if}
+
+{#if showReceipt}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+		<div class="w-96 rounded bg-white dark:bg-gray-800 p-6 shadow-lg text-blackie dark:text-gray-100 transition-colors duration-200">
+			<h2 class="mb-1 text-xl font-bold text-green-600 dark:text-green-400">Order Confirmed!</h2>
+			<p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Screenshot this receipt as proof of your order.</p>
+
+			<div class="flex justify-center mb-4">
+				<img src={qrDataUrl} alt="Order QR Code" class="rounded" />
+			</div>
+
+			<div class="text-sm space-y-1 border-t border-gray-200 dark:border-gray-600 pt-3">
+				<p><strong>Order ID:</strong> {receiptOrder.orderId}</p>
+				<p><strong>Name:</strong> {receiptOrder.name}</p>
+				<p><strong>Product:</strong> {receiptOrder.product}</p>
+				<p><strong>Size:</strong> {receiptOrder.size} &nbsp; <strong>Color:</strong> {receiptOrder.color} &nbsp; <strong>Qty:</strong> {receiptOrder.quantity}</p>
+				<p><strong>Total:</strong> {receiptOrder.total} THB</p>
+				<p><strong>Pickup:</strong> {receiptOrder.pickupLocation}</p>
+			</div>
+
+			<button
+				on:click={() => (showReceipt = false)}
+				class="mt-4 w-full rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE"
+			>
+				Close
+			</button>
+		</div>
 	</div>
 {/if}
 

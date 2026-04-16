@@ -29,7 +29,7 @@
 	// ============================================================
 
 	const APPS_SCRIPT_URL =
-		'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+		'https://script.google.com/macros/s/AKfycbyEWxV7wLFN9veVIeBhx4mCwDg5cxe9rFSQRUy7Sd_I3UYqjmP9BAULuIOYIM47YiFDWA/exec';
 
 	let showModal = false;
 	let isSubmitting = false;

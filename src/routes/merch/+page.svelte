@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import QRCode from 'qrcode';
+	import generatePayload from 'promptpay-qr';
 
 	let pageTitle = 'Merch Store';
 	const product = {
@@ -21,6 +21,16 @@
 		selectedOptions[option.name] = option.choices[0];
 	});
 
+	// ============================================================
+	// CLUB STAFF: Edit these two values and push to GitHub
+	// ============================================================
+	const PROMPTPAY_ID = '0917700039';       // phone or 13-digit national ID
+	const PICKUP_LOCATION = 'Room 101, Engineering Building (Mon–Fri 10:00–17:00)';
+	// ============================================================
+
+	const APPS_SCRIPT_URL =
+		'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+
 	let showModal = false;
 	let isSubmitting = false;
 	let submitStatus = ''; // 'success' | 'error' | ''
@@ -29,25 +39,54 @@
 	let customerName = '';
 	let contactType: 'phone' | 'instagram' | 'line' = 'phone';
 	let contactValue = '';
-	let pickupLocation = 'Loading...';
 
 	// QR receipt
 	let showReceipt = false;
 	let qrDataUrl = '';
 	let receiptOrder: Record<string, unknown> = {};
 
-	const APPS_SCRIPT_URL =
-		'https://script.google.com/macros/s/AKfycbw0757zkQVz_COC8bETu35q40Y290dhVOrJgB5S2L2unJtyV7cbMqAoRT1wnja8UPG8WA/exec';
+	// Slip upload
+	let slipPreview = '';
+	let slipBase64 = '';
+	let slipUploading = false;
+	let slipUploaded = false;
 
-	onMount(async () => {
-		try {
-			const res = await fetch(APPS_SCRIPT_URL);
-			const data = await res.json();
-			pickupLocation = data.pickupLocation || 'TBA';
-		} catch {
-			pickupLocation = 'TBA – check our social media for updates';
+	function handleSlipSelect(e: Event) {
+		const file = (e.target as HTMLInputElement).files?.[0];
+		if (!file) return;
+		if (file.size > 5 * 1024 * 1024) {
+			alert('File too large. Please upload an image under 5MB.');
+			return;
 		}
-	});
+		const reader = new FileReader();
+		reader.onload = () => {
+			const result = reader.result as string;
+			slipPreview = result;
+			slipBase64 = result.split(',')[1]; // strip data URL prefix
+		};
+		reader.readAsDataURL(file);
+	}
+
+	async function uploadSlip() {
+		if (!slipBase64) return;
+		slipUploading = true;
+		try {
+			await fetch(APPS_SCRIPT_URL, {
+				method: 'POST',
+				mode: 'no-cors',
+				body: JSON.stringify({
+					type: 'slip',
+					orderId: receiptOrder.orderId,
+					slip: slipBase64
+				})
+			});
+			slipUploaded = true;
+		} catch {
+			alert('Upload failed. Please try again.');
+		} finally {
+			slipUploading = false;
+		}
+	}
 
 	const contactPlaceholder: Record<string, string> = {
 		phone: '08X-XXX-XXXX',
@@ -73,7 +112,7 @@
 			color: selectedOptions['Color'],
 			quantity: selectedOptions['Quantity'],
 			total: product.price * Number(selectedOptions['Quantity']),
-			pickupLocation
+			PICKUP_LOCATION
 		};
 		try {
 			await fetch(APPS_SCRIPT_URL, {
@@ -81,16 +120,9 @@
 				mode: 'no-cors',
 				body: JSON.stringify(payload)
 			});
-			// Generate QR code from order summary text
-			const qrText = [
-				`Order ID: ${orderId}`,
-				`Name: ${payload.name}`,
-				`Product: ${payload.product}`,
-				`Size: ${payload.size}  Color: ${payload.color}  Qty: ${payload.quantity}`,
-				`Total: ${payload.total} THB`,
-				`Pickup: ${payload.pickupLocation}`
-			].join('\n');
-			qrDataUrl = await QRCode.toDataURL(qrText, { width: 256, margin: 2 });
+			// Generate PromptPay QR with exact order total
+			const promptpayPayload = generatePayload(PROMPTPAY_ID, { amount: payload.total as number });
+			qrDataUrl = await QRCode.toDataURL(promptpayPayload, { width: 256, margin: 2 });
 			receiptOrder = payload;
 			showReceipt = true;
 			customerName = '';
@@ -184,12 +216,39 @@
 				<p><strong>Product:</strong> {receiptOrder.product}</p>
 				<p><strong>Size:</strong> {receiptOrder.size} &nbsp; <strong>Color:</strong> {receiptOrder.color} &nbsp; <strong>Qty:</strong> {receiptOrder.quantity}</p>
 				<p><strong>Total:</strong> {receiptOrder.total} THB</p>
-				<p><strong>Pickup:</strong> {receiptOrder.pickupLocation}</p>
+				<p><strong>Pickup:</strong> {receiptOrder.PICKUP_LOCATION}</p>
+			</div>
+
+			<!-- Slip upload -->
+			<div class="mt-4 border-t border-gray-200 dark:border-gray-600 pt-4">
+				{#if slipUploaded}
+					<p class="text-center text-sm font-semibold text-green-600 dark:text-green-400">
+						Payment slip submitted! We'll verify and confirm your order.
+					</p>
+				{:else}
+					<p class="mb-2 text-sm font-semibold">Upload your payment slip <span class="text-coqueilcot">*</span></p>
+					<input
+						type="file"
+						accept="image/*"
+						on:change={handleSlipSelect}
+						class="w-full text-sm text-gray-500 dark:text-gray-400 file:mr-3 file:rounded file:border-0 file:bg-coqueilcot file:px-3 file:py-1 file:text-sm file:font-semibold file:text-white hover:file:bg-amber_SAE_ECE"
+					/>
+					{#if slipPreview}
+						<img src={slipPreview} alt="Payment slip preview" class="mt-3 w-full rounded border border-gray-200 dark:border-gray-600 object-contain max-h-40" />
+						<button
+							on:click={uploadSlip}
+							disabled={slipUploading}
+							class="mt-3 w-full rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE disabled:opacity-50 disabled:cursor-not-allowed"
+						>
+							{slipUploading ? 'Uploading…' : 'Submit Payment Slip'}
+						</button>
+					{/if}
+				{/if}
 			</div>
 
 			<button
 				on:click={() => (showReceipt = false)}
-				class="mt-4 w-full rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE"
+				class="mt-4 w-full rounded bg-gray-200 dark:bg-gray-700 px-4 py-2 font-bold text-blackie dark:text-gray-100 transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
 			>
 				Close
 			</button>
@@ -242,7 +301,7 @@
 			<!-- Pickup location -->
 			<div class="mb-4 rounded bg-gray-100 dark:bg-gray-700 px-4 py-3 text-sm">
 				<span class="font-semibold">Pickup location:</span>
-				<span class="ml-1">{pickupLocation}</span>
+				<span class="ml-1">{PICKUP_LOCATION}</span>
 			</div>
 
 			<!-- Order summary -->

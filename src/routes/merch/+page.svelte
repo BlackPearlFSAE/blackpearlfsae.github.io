@@ -28,8 +28,11 @@
 	const PICKUP_LOCATION = 'Room 101, Engineering Building (Mon–Fri 10:00–17:00)';
 	// ============================================================
 
+	// Get from your Google Sheet URL: docs.google.com/spreadsheets/d/THIS_PART/edit
+	const SHEET_ID = '1YxGlsysyGsMkIfi2E5XJ4mbOkLKnPCBp9nVEdL6cSRg';
+
 	const APPS_SCRIPT_URL =
-		'https://script.google.com/macros/s/AKfycbwwNAbVJ_mHqQkOC-dauUxpSE6jEdbYOPVwZWEA6wPzKuVX-simFeoM3701UuRwTwDJyw/exec';
+		'https://script.google.com/macros/s/AKfycbzqX6pGdvNqBr1HKmTqJaJ_3UoeF3ULjBZwmw0jMydVopvq6urXgAzFAt_UIUXQq8jFwQ/exec';
 
 	let showModal = false;
 	let isSubmitting = false;
@@ -96,6 +99,42 @@
 		instagram: '@username',
 		line: 'LINE ID'
 	};
+
+	// Order status check
+	let checkOrderId = '';
+	let checkingStatus = false;
+	type OrderStatus = { orderId: string; name: string; product: string; size: string; color: string; quantity: number; total: number; hasSlip: boolean; status: string };
+	let orderStatus: OrderStatus | 'not_found' | null = null;
+
+	async function checkStatus() {
+		if (!checkOrderId.trim()) return;
+		checkingStatus = true;
+		orderStatus = null;
+		try {
+			const query = `SELECT A,B,C,D,E,F,G,H,I,J,K,L,M WHERE B = '${checkOrderId.trim()}'`;
+			const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Orders&tq=${encodeURIComponent(query)}`;
+			const res = await fetch(url);
+			const text = await res.text();
+			const json = JSON.parse(text.match(/setResponse\(([\s\S]*)\);?\s*$/)![1]);
+			const rows = json.table?.rows;
+			if (!rows || rows.length === 0) {
+				orderStatus = 'not_found';
+			} else {
+				const c = rows[0].c;
+				const val = (i: number) => c[i]?.v ?? '';
+				orderStatus = {
+					orderId: val(1), name: val(2), product: val(5),
+					size: val(6), color: val(7),
+					quantity: Number(val(8)), total: Number(val(9)),
+					hasSlip: !!val(11), status: val(12) || 'Pending'
+				};
+			}
+		} catch {
+			orderStatus = 'not_found';
+		} finally {
+			checkingStatus = false;
+		}
+	}
 
 	$: canSubmit = customerName.trim() !== '' && contactValue.trim() !== '';
 
@@ -194,6 +233,50 @@
 				</button>
 			</div>
 		</div>
+	</div>
+</section>
+
+<section class="bg-baby_powder dark:bg-gray-900 px-6 pb-12 text-blackie dark:text-gray-100 transition-colors duration-200">
+	<div class="mx-auto max-w-4xl border-t border-gray-200 dark:border-gray-700 pt-8">
+		<h2 class="mb-4 text-xl font-bold">Check Order Status</h2>
+		<div class="flex gap-2">
+			<input
+				type="text"
+				bind:value={checkOrderId}
+				placeholder="Order ID (e.g. BPR-1234567890)"
+				on:keydown={(e) => e.key === 'Enter' && checkStatus()}
+				class="flex-1 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-blackie dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-coqueilcot"
+			/>
+			<button
+				on:click={checkStatus}
+				disabled={checkingStatus}
+				class="rounded bg-coqueilcot px-4 py-2 font-bold text-white transition duration-300 hover:bg-amber_SAE_ECE disabled:opacity-50"
+			>
+				{checkingStatus ? 'Checking…' : 'Check'}
+			</button>
+		</div>
+
+		{#if orderStatus === 'not_found'}
+			<p class="mt-3 text-sm text-red-500">Order not found. Please check your Order ID.</p>
+		{:else if orderStatus}
+			<div class="mt-4 rounded border border-gray-200 dark:border-gray-700 p-4 text-sm space-y-1">
+				<p><strong>Order ID:</strong> {orderStatus.orderId}</p>
+				<p><strong>Name:</strong> {orderStatus.name}</p>
+				<p><strong>Product:</strong> {orderStatus.product} — {orderStatus.size} / {orderStatus.color} × {orderStatus.quantity}</p>
+				<p><strong>Total:</strong> {orderStatus.total} THB</p>
+				<p><strong>Payment Slip:</strong> {orderStatus.hasSlip ? 'Submitted ✓' : 'Not uploaded yet'}</p>
+				<p class="flex items-center gap-2 pt-1">
+					<strong>Status:</strong>
+					<span class={`rounded-full px-3 py-0.5 text-xs font-semibold ${
+						orderStatus.status === 'Verified'
+							? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+							: orderStatus.status === 'Rejected'
+							? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+							: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+					}`}>{orderStatus.status}</span>
+				</p>
+			</div>
+		{/if}
 	</div>
 </section>
 

@@ -53,6 +53,7 @@
 
 	function handleSlipSelect(e: Event) {
 		const file = (e.target as HTMLInputElement).files?.[0];
+		console.log('File selected:', file?.name, file?.size);
 		if (!file) return;
 		if (file.size > 5 * 1024 * 1024) {
 			alert('File too large. Please upload an image under 5MB.');
@@ -63,11 +64,13 @@
 			const result = reader.result as string;
 			slipPreview = result;
 			slipBase64 = result.split(',')[1]; // strip data URL prefix
+			console.log('slipBase64 set, length:', slipBase64.length);
 		};
 		reader.readAsDataURL(file);
 	}
 
 	async function uploadSlip() {
+		console.log('uploadSlip called, slipBase64 length:', slipBase64.length);
 		if (!slipBase64) return;
 		slipUploading = true;
 		try {

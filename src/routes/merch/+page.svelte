@@ -1,14 +1,24 @@
 <script lang="ts">
 	import QRCode from 'qrcode';
 	import generatePayload from 'promptpay-qr';
+	import { onMount } from 'svelte';
 
 	let pageTitle = 'Merch Store';
-	const product = {
+
+	// Default product — shown while loading or if fetch fails
+	type Product = {
+		name: string;
+		price: number;
+		image: string;
+		description: string;
+		options: { name: string; choices: (string | number)[] }[];
+	};
+
+	let product: Product = {
 		name: 'Black Pearl Racing T-Shirt',
 		price: 599,
 		image: '/merch/philosopher.jpeg',
-		description:
-			'Premium cotton t-shirt featuring the Black Pearl Racing logo. Available in all sizes.',
+		description: 'Premium cotton t-shirt featuring the Black Pearl Racing logo. Available in all sizes.',
 		options: [
 			{ name: 'Size', choices: ['S', 'M', 'L', 'XL'] },
 			{ name: 'Color', choices: ['Black', 'White', 'Navy'] },
@@ -17,9 +27,46 @@
 	};
 
 	let selectedOptions: Record<string, string | number> = {};
-	product.options.forEach((option) => {
-		selectedOptions[option.name] = option.choices[0];
-	});
+
+	function initOptions() {
+		selectedOptions = {};
+		product.options.forEach((option) => {
+			selectedOptions[option.name] = option.choices[0];
+		});
+	}
+
+	async function loadProduct() {
+		try {
+			const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Products`;
+			const res = await fetch(url);
+			const text = await res.text();
+			const json = JSON.parse(text.match(/setResponse\(([\s\S]*)\);?\s*$/)![1]);
+			const rows: any[] = json.table?.rows || [];
+			const config: Record<string, string> = {};
+			rows.forEach((row) => {
+				const key = row.c[0]?.v;
+				const value = row.c[1]?.v;
+				if (key && value !== null && value !== undefined) config[key] = String(value);
+			});
+			if (config.name) product = {
+				name: config.name,
+				price: Number(config.price) || product.price,
+				image: config.image || product.image,
+				description: config.description || product.description,
+				options: [
+					{ name: 'Size', choices: config.sizes ? config.sizes.split(',').map(s => s.trim()) : ['S','M','L','XL'] },
+					{ name: 'Color', choices: config.colors ? config.colors.split(',').map(s => s.trim()) : ['Black','White','Navy'] },
+					{ name: 'Quantity', choices: config.quantities ? config.quantities.split(',').map(s => Number(s.trim())) : [1,2,3,4,5] }
+				]
+			};
+		} catch {
+			// keep defaults
+		} finally {
+			initOptions();
+		}
+	}
+
+	onMount(loadProduct);
 
 	// ============================================================
 	// CLUB STAFF: Edit these two values and push to GitHub

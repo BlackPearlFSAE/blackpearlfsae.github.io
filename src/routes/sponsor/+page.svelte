@@ -7,11 +7,11 @@
 
 	let pageTitle = 'Sponsor';
 
-	const platinumSponsors = Array.from({ length: 6 }, (_, i) => ({
-		id: `platinum-${i}`,
-		name: 'Lorem Corp',
-		image: `https://picsum.photos/seed/platinum-${i}/400/300`
-	}));
+	// const platinumSponsors = Array.from({ length: 6 }, (_, i) => ({
+	// 	id: `platinum-${i}`,
+	// 	name: 'Lorem Corp',
+	// 	image: 
+	// }));
 
 	const goldSponsors = Array.from({ length: 8 }, (_, i) => ({
 		id: `gold-${i}`,
@@ -37,9 +37,25 @@
 </div> -->
 
 <div class="bg-baby_powder dark:bg-gray-900 p-6 text-blackie dark:text-gray-100 transition-colors duration-200">
-	<div class="container mx-auto px-4">
+	<div class="container mx-auto px-4 row-auto">
 		<h1 class="mb-8 text-center text-3xl font-bold">Our Sponsors</h1>
-		<MasonrySection title="Platinum Sponsors" sponsors={platinumSponsors} />
+		<!-- <MasonrySection title="Platinum Sponsors" sponsors={platinumSponsors} />
+		  -->
+		<div class="flex flex-wrap justify-center items-center gap-6">
+			<img src="/sponsors/hiokinoback.png" alt="Wurth" class="w-40 h-auto" />
+			<img src="/sponsors/nsknoback.png" alt="Wurth" class="w-40 h-auto" />
+			<img src="/sponsors/wurthnoback.png" alt="Wurth" class="w-40 h-auto" />
+			<img src="/sponsors/cpenoback.png" alt="Wurth" class="w-40 h-auto" />
+			<img src="/sponsors/nexzternoback.png" alt="Nexzter" class="w-40 h-auto" />
+			<img src="/sponsors/PEMCEnoback.png" alt="PEMCE" class="w-40 h-auto" />
+			<img src="/sponsors/pspnoback.png" alt="PSP" class="w-40 h-auto" />
+			<img src="/sponsors/morinnoback.png" alt="Morin" class="w-40 h-auto" />
+			<img src="/sponsors/pumpkinnoback.png" alt="Pumpkin" class="w-40 h-auto" />
+			<img src="/sponsors/tozzhinnoback.png" alt="Tozzhin" class="w-40 h-auto" />
+			<img src="/sponsors/upbeatnoback.png" alt="Upbeat" class="w-40 h-auto" />
+			<img src="/sponsors/wurthnoback.png" alt="Wurth" class="w-40 h-auto" />
+			<img src="/sponsors/wurthnoback.png" alt="Wurth" class="w-40 h-auto" />
+		</div>
 		<MasonrySection title="Gold Sponsors" sponsors={goldSponsors} />
 		<MasonrySection title="Silver Sponsors" sponsors={silverSponsors} />
 	</div>

@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { sponsors, loadSponsors } from '$lib/sponsorStore';
 
 	const baseTitle = 'Black Pearl Racing Team - KMUTT';
 
@@ -28,7 +29,7 @@
 
 	let currentIndex = 0;
 	const totalImages = images.length;
-	let intervalA;
+	let intervalA: ReturnType<typeof setInterval>;
 
 	function nextSlide() {
 		currentIndex = (currentIndex + 1) % totalImages;
@@ -49,11 +50,11 @@
 	// Countdown Timer
 	const targetDate = new Date('2025-12-25T00:00:00');
 	let timeLeft = getTimeRemaining();
-	let intervalB;
+	let intervalB: ReturnType<typeof setInterval>;
 
 	function getTimeRemaining() {
 		const now = new Date();
-		const total = targetDate - now;
+		const total = targetDate.getTime() - now.getTime();
 
 		const seconds = Math.floor((total / 1000) % 60);
 		const minutes = Math.floor((total / 1000 / 60) % 60);
@@ -79,73 +80,11 @@
 		clearInterval(intervalB);
 	});
 
-	function formatNumber(num) {
+	function formatNumber(num: number) {
 		return String(num).padStart(2, '0');
 	}
 
-	const sponsors = [
-		{
-			src: '/sponsors/NSK.png',
-			alt: 'NSK Global',
-			caption: 'NSK Global',
-			link: 'https://www.nsk.com/th-th/'
-		},
-		{
-			src: '/sponsors/Pumkin.png',
-			alt: 'Pumpkin',
-			caption: 'Pumpkin',
-			link: 'https://pumpkin.co.th/'
-		},
-		{
-			src: '/sponsors/PSP.png',
-			alt: 'PSP',
-			caption: 'Prapadaeng Steel Pipe',
-			link: 'https://www.dataforthai.com/company/0115547001383/'
-		},
-		{
-			src: '/sponsors/henkel.png',
-			alt: 'Henkel',
-			caption: 'Henkel',
-			link: 'https://www.henkel.co.th/'
-		},
-		{
-			src: '/sponsors/nextzer.png',
-			alt: 'Nextzer',
-			caption: 'Nextzer',
-			link: 'https://www.nexzter.com/'
-		},
-		{
-			src: '/sponsors/UpBeat.png',
-			alt: 'UpBeat',
-			caption: 'UpBeat Trailers',
-			link: 'https://www.upbeat.co.th/v2/index.php'
-		},
-		{
-			src: '/sponsors/Lactasoy.png',
-			alt: 'Lactasoy',
-			caption: 'Lactasoy',
-			link: 'https://www.lactasoy.com/'
-		},
-		{
-			src: '/sponsors/PCBWay.png',
-			alt: 'PCBWay',
-			caption: 'PCBWay',
-			link: 'https://www.pcbway.com/'
-		},
-		{
-			src: '/sponsors/bender.png',
-			alt: 'Bender',
-			caption: 'Bender',
-			link: 'https://www.bender.de/en/'
-		},
-		{
-			src: '/sponsors/Tesla.png',
-			alt: 'Tesla',
-			caption: 'Tesla',
-			link: 'https://www.tesla.com/'
-		}
-		// Add more sponsors as needed
-	];
+	onMount(loadSponsors);
 </script>
 
 <svelte:head>
@@ -291,30 +230,30 @@
 		<div class="overflow-x-auto whitespace-nowrap px-2 py-4">
 		<div class="overflow-hidden whitespace-nowrap">
 			<div class="animate-marquee flex">
-				{#each sponsors as sponsor}
+				{#each $sponsors as sponsor}
 					<a
-						href={sponsor.link}
+						href={sponsor.website || '#'}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center transition-transform duration-200 hover:scale-105"
 					>
-						<img src={sponsor.src} alt={sponsor.alt} class="h-48 w-48 object-contain" />
+						<img src={sponsor.image} alt={sponsor.name} class="h-48 w-48 object-contain" />
 						<span class="mt-2 text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
-							{sponsor.caption}
+							{sponsor.name}
 						</span>
 					</a>
 				{/each}
-				<!-- Duplicate the sponsors for seamless looping -->
-				{#each sponsors as sponsor}
+				<!-- Duplicate for seamless looping -->
+				{#each $sponsors as sponsor}
 					<a
-						href={sponsor.link}
+						href={sponsor.website || '#'}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="mx-3 flex w-48 flex-shrink-0 flex-col items-center transition-transform duration-200 hover:scale-105"
 					>
-						<img src={sponsor.src} alt={sponsor.alt} class="h-48 w-48 object-contain" />
+						<img src={sponsor.image} alt={sponsor.name} class="h-48 w-48 object-contain" />
 						<span class="mt-2 text-center text-sm font-semibold text-gray-700 dark:text-gray-300">
-							{sponsor.caption}
+							{sponsor.name}
 						</span>
 					</a>
 				{/each}

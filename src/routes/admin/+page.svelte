@@ -82,7 +82,7 @@
 		await fetch(PUBLIC_APPS_SCRIPT_URL, {
 			method: 'POST',
 			mode: 'no-cors',
-			body: JSON.stringify({ type: 'verify', orderId, newStatus, password: ADMIN_PASSWORD })
+			body: JSON.stringify({ type: 'verify', orderId, newStatus, password: PUBLIC_ADMIN_PASSWORD })
 		});
 		// Optimistic update
 		orders = orders.map((o) => (o.orderId === orderId ? { ...o, status: newStatus } : o));

@@ -42,12 +42,14 @@
 			const text = await res.text();
 			const json = JSON.parse(text.match(/setResponse\(([\s\S]*)\);?\s*$/)![1]);
 			const rows: any[] = json.table?.rows || [];
+			const headers: string[] = (json.table?.cols || []).map((col: any) => col.label);
 			const config: Record<string, string> = {};
-			rows.forEach((row) => {
-				const key = row.c[0]?.v;
-				const value = row.c[1]?.v;
-				if (key && value !== null && value !== undefined) config[key] = String(value);
-			});
+			if (rows.length > 0) {
+				headers.forEach((header, i) => {
+					const val = rows[0].c[i]?.v;
+					if (header && val !== null && val !== undefined) config[header] = String(val).trim();
+				});
+			}
 			if (config.name) product = {
 				name: config.name,
 				price: Number(config.price) || product.price,
@@ -59,8 +61,8 @@
 					{ name: 'Quantity', choices: config.quantities ? config.quantities.split(',').map(s => Number(s.trim())) : [1,2,3,4,5] }
 				]
 			};
-		} catch {
-			// keep defaults
+		} catch (e) {
+			console.error('[Products] Fetch failed:', e);
 		} finally {
 			initOptions();
 		}

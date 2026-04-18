@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { PUBLIC_SHEET_ID, PUBLIC_ADMIN_PASSWORD, PUBLIC_APPS_SCRIPT_URL } from '$env/static/public';
+
 	// ============================================================
 	// CLUB STAFF: Set these values
 	// ============================================================
-	const SHEET_ID = '1YxGlsysyGsMkIfi2E5XJ4mbOkLKnPCBp9nVEdL6cSRg';
-	const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqX6pGdvNqBr1HKmTqJaJ_3UoeF3ULjBZwmw0jMydVopvq6urXgAzFAt_UIUXQq8jFwQ/exec';
-	const ADMIN_PASSWORD = 'bpr2025'; // Change this — also update in Apps Script
+	// const SHEET_ID = '1YxGlsysyGsMkIfi2E5XJ4mbOkLKnPCBp9nVEdL6cSRg';
+	// const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqX6pGdvNqBr1HKmTqJaJ_3UoeF3ULjBZwmw0jMydVopvq6urXgAzFAt_UIUXQq8jFwQ/exec';
+	// const ADMIN_PASSWORD = 'bpr2025'; // Change this — also update in Apps Script
 	// ============================================================
 
 	type Order = {
@@ -32,7 +34,7 @@
 	let updatingId = '';
 
 	async function login() {
-		if (password === ADMIN_PASSWORD) {
+		if (password === PUBLIC_ADMIN_PASSWORD) {
 			isLoggedIn = true;
 			wrongPassword = false;
 			await fetchOrders();
@@ -45,7 +47,7 @@
 		loading = true;
 		fetchError = false;
 		try {
-			const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Orders`;
+			const url = `https://docs.google.com/spreadsheets/d/${PUBLIC_SHEET_ID}/gviz/tq?tqx=out:json&sheet=Orders`;
 			const res = await fetch(url);
 			const text = await res.text();
 			const json = JSON.parse(text.match(/setResponse\(([\s\S]*)\);?\s*$/)![1]);
@@ -77,7 +79,7 @@
 
 	async function updateStatus(orderId: string, newStatus: string) {
 		updatingId = orderId;
-		await fetch(APPS_SCRIPT_URL, {
+		await fetch(PUBLIC_APPS_SCRIPT_URL, {
 			method: 'POST',
 			mode: 'no-cors',
 			body: JSON.stringify({ type: 'verify', orderId, newStatus, password: ADMIN_PASSWORD })

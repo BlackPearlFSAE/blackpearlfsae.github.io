@@ -79,7 +79,7 @@
 	const SHEET_ID = '1YxGlsysyGsMkIfi2E5XJ4mbOkLKnPCBp9nVEdL6cSRg';
 
 	const APPS_SCRIPT_URL =
-		'https://script.google.com/macros/s/AKfycbzqX6pGdvNqBr1HKmTqJaJ_3UoeF3ULjBZwmw0jMydVopvq6urXgAzFAt_UIUXQq8jFwQ/exec';
+		'https://script.google.com/macros/s/AKfycbwU-6UbJSXCcFFmkFf8YfQmpqZduZnZaMNf2vbr8OLhFeOObLuph4Qf-G1fq48vwfoT1A/exec';
 
 	let showModal = false;
 	let isSubmitting = false;

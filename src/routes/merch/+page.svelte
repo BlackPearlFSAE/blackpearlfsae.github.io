@@ -50,10 +50,14 @@
 					if (header && val !== null && val !== undefined) config[header] = String(val).trim();
 				});
 			}
+			function driveImage(url: string) {
+				const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+				return match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400` : url;
+			}
 			if (config.name) product = {
 				name: config.name,
 				price: Number(config.price) || product.price,
-				image: config.image || product.image,
+				image: config.image ? driveImage(config.image) : product.image,
 				description: config.description || product.description,
 				options: [
 					{ name: 'Size', choices: config.sizes ? config.sizes.split(',').map(s => s.trim()) : ['S','M','L','XL'] },

@@ -154,36 +154,39 @@
 	};
 
 	// Order status check
-	let checkOrderId = '';
+	let checkQuery = '';
 	let checkingStatus = false;
 	type OrderStatus = { orderId: string; name: string; product: string; size: string; color: string; quantity: number; total: number; hasSlip: boolean; status: string };
-	let orderStatus: OrderStatus | 'not_found' | null = null;
+	let orderResults: OrderStatus[] | 'not_found' | null = null;
 
 	async function checkStatus() {
-		if (!checkOrderId.trim()) return;
+		const q = checkQuery.trim();
+		if (!q) return;
 		checkingStatus = true;
-		orderStatus = null;
+		orderResults = null;
 		try {
-			const query = `SELECT A,B,C,D,E,F,G,H,I,J,K,L,M WHERE B = '${checkOrderId.trim()}'`;
+			const escaped = q.replace(/'/g, "\\'").replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+			const query = `SELECT A,B,C,D,E,F,G,H,I,J,K,L,M WHERE C matches '(?i).*${escaped}.*' OR E matches '(?i).*${escaped}.*'`;
 			const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Orders&tq=${encodeURIComponent(query)}`;
 			const res = await fetch(url);
 			const text = await res.text();
 			const json = JSON.parse(text.match(/setResponse\(([\s\S]*)\);?\s*$/)![1]);
 			const rows = json.table?.rows;
 			if (!rows || rows.length === 0) {
-				orderStatus = 'not_found';
+				orderResults = 'not_found';
 			} else {
-				const c = rows[0].c;
-				const val = (i: number) => c[i]?.v ?? '';
-				orderStatus = {
-					orderId: val(1), name: val(2), product: val(5),
-					size: val(6), color: val(7),
-					quantity: Number(val(8)), total: Number(val(9)),
-					hasSlip: !!val(11), status: val(12) || 'Pending'
-				};
+				orderResults = rows.map((row: any) => {
+					const val = (i: number) => row.c[i]?.v ?? '';
+					return {
+						orderId: val(1), name: val(2), product: val(5),
+						size: val(6), color: val(7),
+						quantity: Number(val(8)), total: Number(val(9)),
+						hasSlip: !!val(11), status: val(12) || 'Pending'
+					};
+				});
 			}
 		} catch {
-			orderStatus = 'not_found';
+			orderResults = 'not_found';
 		} finally {
 			checkingStatus = false;
 		}
@@ -295,8 +298,8 @@
 		<div class="flex gap-2">
 			<input
 				type="text"
-				bind:value={checkOrderId}
-				placeholder="Order ID (e.g. BPR-1234567890)"
+				bind:value={checkQuery}
+				placeholder="Your name or contact (phone / Line / IG)"
 				on:keydown={(e) => e.key === 'Enter' && checkStatus()}
 				class="flex-1 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-blackie dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-coqueilcot"
 			/>
@@ -309,25 +312,29 @@
 			</button>
 		</div>
 
-		{#if orderStatus === 'not_found'}
-			<p class="mt-3 text-sm text-red-500">Order not found. Please check your Order ID.</p>
-		{:else if orderStatus}
-			<div class="mt-4 rounded border border-gray-200 dark:border-gray-700 p-4 text-sm space-y-1">
-				<p><strong>Order ID:</strong> {orderStatus.orderId}</p>
-				<p><strong>Name:</strong> {orderStatus.name}</p>
-				<p><strong>Product:</strong> {orderStatus.product} — {orderStatus.size} / {orderStatus.color} × {orderStatus.quantity}</p>
-				<p><strong>Total:</strong> {orderStatus.total} THB</p>
-				<p><strong>Payment Slip:</strong> {orderStatus.hasSlip ? 'Submitted ✓' : 'Not uploaded yet'}</p>
-				<p class="flex items-center gap-2 pt-1">
-					<strong>Status:</strong>
-					<span class={`rounded-full px-3 py-0.5 text-xs font-semibold ${
-						orderStatus.status === 'Verified'
-							? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-							: orderStatus.status === 'Rejected'
-							? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
-							: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
-					}`}>{orderStatus.status}</span>
-				</p>
+		{#if orderResults === 'not_found'}
+			<p class="mt-3 text-sm text-red-500">No orders found. Try your name or contact info.</p>
+		{:else if orderResults}
+			<div class="mt-4 space-y-3">
+				{#each orderResults as order}
+					<div class="rounded border border-gray-200 dark:border-gray-700 p-4 text-sm space-y-1">
+						<p><strong>Order ID:</strong> {order.orderId}</p>
+						<p><strong>Name:</strong> {order.name}</p>
+						<p><strong>Product:</strong> {order.product} — {order.size} / {order.color} × {order.quantity}</p>
+						<p><strong>Total:</strong> {order.total} THB</p>
+						<p><strong>Payment Slip:</strong> {order.hasSlip ? 'Submitted ✓' : 'Not uploaded yet'}</p>
+						<p class="flex items-center gap-2 pt-1">
+							<strong>Status:</strong>
+							<span class={`rounded-full px-3 py-0.5 text-xs font-semibold ${
+								order.status === 'Verified'
+									? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+									: order.status === 'Rejected'
+									? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+									: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+							}`}>{order.status}</span>
+						</p>
+					</div>
+				{/each}
 			</div>
 		{/if}
 	</div>

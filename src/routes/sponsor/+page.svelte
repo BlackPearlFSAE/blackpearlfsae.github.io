@@ -40,11 +40,11 @@
 					<div class="flex flex-wrap justify-center items-center gap-6">
 						{#each grouped[tier] as sponsor}
 							{#if sponsor.website}
-								<a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center h-20 w-40 rounded-lg bg-black/40 p-3 transition-opacity hover:opacity-80">
+								<a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center h-20 w-40 rounded-lg  p-3 transition-opacity hover:opacity-80">
 									<img src={sponsor.image} alt={sponsor.name} class="h-full w-full object-contain" />
 								</a>
 							{:else}
-								<div class="flex items-center justify-center h-20 w-40 rounded-lg bg-black/40 p-3">
+								<div class="flex items-center justify-center h-20 w-40 rounded-lg p-3 transition-opacity hover:opacity-80">
 									<img src={sponsor.image} alt={sponsor.name} class="h-full w-full object-contain" />
 								</div>
 							{/if}

@@ -15,7 +15,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.3",
     "@fontsource/young-serif": "^5.1.0",
-    "@sveltejs/adapter-static": "^3.0.6",
+    "@sveltejs/adapter-static": "^3.0.11",
     "@sveltejs/kit": "^2.70.1",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@types/qrcode": "^1.5.6",
